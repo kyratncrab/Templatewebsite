@@ -2,7 +2,7 @@
 
 Sistem desain katalog ini. Ditulis dari koreksi Iky sendiri (learn-taste): setiap aturan
 berasal dari kata-katanya, bukan dari selera umum. Aturan di sini mengikat build
-berikutnya; kalau ada yang bertentangan, aturan Iky menang.
+berikutnya; kalau ada yang bertentangan, aturan Iky yang terbaru menang.
 
 ## Aturan dari Iky
 
@@ -20,7 +20,8 @@ berikutnya; kalau ada yang bertentangan, aturan Iky menang.
 4. **Jangan ada contoh template dulu.** (Iky, 2026-11-24: "jangan ada contoh
    template dulu, buat homepage yang bagus")
    Homepage saja yang tampil. File di `templates/` adalah draf yang belum
-   ditautkan.
+   ditautkan. **DIGANTI aturan 7 (2026-11-24 22:42):** tombol "Lihat template"
+   sekarang ditautkan ke `templates/<slug>/contoh-1/index.html`.
 5. **Rombak semua, lebih modern.** (Iky, 2026-11-24: "rombak semua ganti gaya
    tema animasi grid dll pokok rombak semua ganti yang lebih moderen")
    Tema diganti Kiln ke Spore, grid biasa ke bento, langkah ke jalur
@@ -32,70 +33,91 @@ berikutnya; kalau ada yang bertentangan, aturan Iky menang.
    hero split ke dunia 3D full-screen, kristal ke lapangan bentuk, grid/bento
    ke reel menyamping, langkah ke log malam, foto ke 6 foto baru, judul ke
    "Toko kamu, dalam 3D.", wordmark dihapus.
+7. **Total redesign: Modern 3D Digital World.** (Iky, 2026-11-24 22:42, brief
+   tertulis; diawali "jelek," tentang Midnight)
+   Bangun ulang seluruh identitas: dunia miniatur 3D premium ala landing page
+   startup teknologi. Kaca (glassmorphism), gradasi halus, bayangan lembut,
+   pencahayaan ambient, kedalaman dan perspektif 3D, tipografi premium.
+   Hero: judul "Bangun Dunia Digital Bisnismu.", dunia miniatur 3D (bangunan
+   toko/kafe/restoran/butik) sebagai latar, animasi floating, CTA premium,
+   search bar modern. Kategori: 6 kartu 3D, masing-masing dengan miniature
+   3D building sesuai jenis bisnisnya, rounded modern, hover + tilt 3D,
+   shadow dan depth, **tanpa foto stok yang tidak relevan**. Palet: deep navy,
+   electric blue, cyan, soft purple, white, gradasi halus. Fungsionalitas
+   lama dipertahankan (6 kategori, search, navigasi, cara kerja, link
+   template); yang belum bekerja diperbaiki tanpa menghilangkan tujuannya.
+   Tidak ada error JavaScript; animasi optimal di mobile.
 
-## Sistem (kombinasi tools)
+## Sistem (brief World)
 
-- **Tema: Hallmark Midnight.** Biru tengah malam, tinta putih dingin, azure
-  sebagai satu sinyal. Mona Sans: display 300 lebar 125%, body 400 lebar
-  normal, satu keluarga dua lebar. Semua sudut kotak (radius 0). Tanpa
-  grain, tanpa kaca/blur, tanpa gradasi, tanpa bloom.
-- **Palet diverifikasi Leonardo.** Tinta 17.35:1, muted 8.36:1, azure 10.96:1,
-  teks gelap di atas azure 10.65:1 (semua lulus WCAG). Token ada di `:root`
-  `css/style.css`; jangan pakai warna literal di luar token.
-- **Vendor lokal, tanpa CDN untuk JS.** `js/vendor/three.module.min.js`
-  (three.js), `js/vendor/gsap.min.js` (GSAP), `js/vendor/lottie.min.js`
-  (lottie-web). Importmap menunjuk file lokal. Font Google Fonts dan foto
-  remote (Wikimedia/Picsum) tetap dari luar.
-- **Hero: dunia 3D full-screen (scrolltide layers).** Canvas menutupi seluruh
-  viewport; judul duduk di tanah gelap di bawah; bentuk-bentuk hidup di
-  bagian atas. Tidak ada split hero, tidak ada scrim gradasi.
-- **Kategori: reel menyamping (scrolltide reel).** Section menempel 340svh;
-  scroll ke bawah menggeser kartu ke samping; kartu di garis fokus tajam dan
-  penuh, sisanya redup dan mengecil; foto di dalam frame bergeser sedikit.
-  Di HP, reel jadi geser horizontal biasa (scroll-snap).
-- **Langkah: log malam.** Tiga baris bernomor dengan meter 2px yang terisi
-  mengikuti scroll; langkah aktif tinta terang, sisanya redup.
-- **Penutup: satu angka sebagai pernyataan.** Angka "6" besar + "gaya" +
-  satu kalimat + tombol azure.
-- **Scroll: satu loop rAF (scrolltide engine).** Progress bar + reel +
-  meter log. Section lain memakai reveal `data-reveal` + `.is-in`, tetap
-  terlihat tanpa JS. Tidak ada Lenis dan tidak ada ScrollTrigger — satu
-  mesin scroll saja.
-- **Gerakan: motion Premium.** Easing khas `cubic-bezier(0.4,0,0.2,1)`;
-  durasi cepat 150ms, standar 350ms, lambat 600ms. Entrance hero satu
-  gelombang: lead dulu, support menyusul, dekorasi hanya fade.
-- **Koreografi (choreograph).** Satu entrance per container; stagger
-  120ms di hero; interaksi tidak pernah diblokir animasi.
-- **Performa (animation-performance + review-animations).** Hanya
-  `transform` dan `opacity` yang dianimasikan; tidak ada `transition: all`;
-  hover hanya di `@media (hover:hover) and (pointer:fine)`; `prefers-reduced-motion`
-  mematikan gerakan (konten tetap terlihat, reel jadi daftar geser).
-- **Mobile (mobile-native).** Hero `100svh`, `-webkit-tap-highlight-color`
-  transparent, input 16px (tidak zoom), safe-area di header/footer.
+- **Tema: Modern 3D Digital World.** Deep navy `#0a1128`, electric blue
+  `#2f7bff`, cyan `#22d3ee`, soft purple `#a78bfa`, putih `#f4f7ff`.
+  Gradasi biru-cyan (CTA, judul, panel penutup) dan kaca (header, badge,
+  search, kartu, tombol sekunder). Radius modern: kartu 24px, panel 32px,
+  tombol/pill 999px. Font Plus Jakarta Sans (display 800, body 400/500).
+- **Palet diverifikasi Leonardo.** Putih di navy 17.44:1, muted di navy
+  7.59:1, cyan di navy 10.34:1, navy di biru 4.80:1, navy di cyan 10.34:1,
+  navy di tengah gradasi 7.49:1 (semua lulus WCAG). Aturan keras: **teks di
+  atas gradasi biru-cyan memakai NAVY** (putih di biru hanya 3.89:1, gagal).
+  Token ada di `:root` `css/style.css`.
+- **Hero: dunia miniatur 3D mengambang.** Pulau melayang (disk + kerucut
+  bawah + kristal cyan) dengan 6 bangunan kartun (kafe berawning, butik ungu,
+  rumah cyan, toko hijau, menara), pohon, lampu, awan, balon, 240 bintang.
+  Pulau berputar pelan; kamera parallax mengikuti kursor; klik di mana saja
+  meledak jadi partikel. Pencahayaan: ambient + hemisphere + directional
+  dengan bayangan lembut. Teks di atas langit gelap scene.
+- **Fallback hero anti-kosong.** Gambar kota SVG (`assets/hero-city.svg`)
+  tampil di belakang canvas secara default; JS menyembunyikannya hanya
+  setelah SATU frame 3D berhasil dirender. Kalau WebGL/modul gagal, hero
+  tidak pernah kosong. Status tercatat di `window.__world3d`.
+- **Kategori: grid 3 kolom (bukan reel).** Reel diganti grid supaya keenam
+  kartu selalu terlihat walau driver scroll gagal. Setiap kartu: visual
+  gradasi + bangunan isometrik SVG (`assets/buildings/<slug>.svg`, dibuat
+  dengan generator `scripts/gen-buildings.py`, tanpa foto stok), nomor 01-06,
+  ikon Lucide, deskripsi, 3 chip, tombol "Lihat template". Hover: naik 6px +
+  bayangan + border cyan. Tilt 3D (rotateX/Y maks 6-7 derajat) hanya di
+  pointer halus + layar lebar; di HP tilt mati.
+- **Cara kerja: 3 kartu kaca.** Nomor gradasi besar 01-03, ikon Lucide,
+  judul + satu kalimat. Penutup: panel gradasi biru-cyan-ungu dengan tombol
+  putih (teks navy).
+- **Animasi: loader elegan + satu loop rAF.** Loader (logo + bar) hilang
+  sendiri lewat CSS setelah 1.7 detik walau JS gagal; JS menyembunyikannya
+  lebih cepat saat load. Satu loop rAF: progress bar + parallax hero
+  (konten naik 56px dan memudar saat scroll). Reveal `data-reveal` via
+  IntersectionObserver; tanpa JS semua terlihat (class `.js`).
+- **Pencarian.** Filter langsung saat mengetik (data-cari + teks kartu);
+  submit form (GET `?cari=`) ikut memfilter saat halaman dimuat; state kosong
+  + tombol reset. Search tetap di hero, bukan di header.
+- **Vendor lokal, tanpa CDN untuk JS.** Hanya `js/vendor/three.module.min.js`
+  (three.js) via importmap. GSAP dan lottie-web tidak dipakai di build ini
+  (tetap ada di `js/vendor/` dari build sebelumnya). Font dari Google Fonts.
+  Tidak ada foto remote di homepage (semua visual SVG lokal).
+- **Performa.** Hanya `transform` dan `opacity` yang dianimasikan; DPR
+  dibatasi 2 (1.5 di HP); bintang lebih sedikit di HP; loop 3D berhenti
+  saat hero tidak terlihat / tab tersembunyi; `prefers-reduced-motion`
+  mematikan gerakan dan merender satu frame statis.
+- **Mobile.** Grid 3 ke 2 ke 1 kolom; hero `100svh`; nav teks disembunyikan,
+  CTA tetap; input search 16px (tidak zoom); tilt dan parallax mati.
 - **Ikon: Lucide.** Semua ikon dari `assets/icons/` (satu gaya stroke).
   Tidak ada emoji atau glyph sebagai ikon.
-- **3D: reanimate.** Dunia 3D mengikuti referensi "Website 3D Animasi":
-  lapangan 18 bentuk geometri + bintang + kabut + klik meledak (raycast ke
-  titik klik) + kamera parallax mengikuti kursor.
-- **Performa (animation-performance + review-animations).** Hanya
-  `transform` dan `opacity` yang dianimasikan; tidak ada `transition: all`;
-  hover hanya di `@media (hover:hover) and (pointer:fine)`; `prefers-reduced-motion`
-  mematikan gerakan (konten tetap terlihat).
-- **Mobile (mobile-native).** Hero `100svh`, `-webkit-tap-highlight-color`
-  transparent, input 16px (tidak zoom), safe-area di header/footer.
-- **Ikon: Lucide.** Semua ikon dari `assets/icons/` (satu gaya stroke).
-  Tidak ada emoji atau glyph sebagai ikon.
-- **3D: reanimate.** Dunia 3D mengikuti referensi "Website 3D Animasi":
-  lapangan 18 bentuk geometri + bintang + kabut + klik meledak (raycast ke
-  titik klik) + kamera parallax mengikuti kursor.
+- **Sloplint.** Perbaikan nyata diterapkan (overflow-x clip, minmax(0,1fr),
+  text-wrap balance, tabular-nums, pause cue, :active). Di-waive karena
+  brief user menuntutnya: gradasi + kaca, warna aksen kategori, tombol di
+  dalam kartu, eyebrow sebelum h2, kata gradasi di judul hero (sekali),
+  tombol putih di panel gradasi, skala spasi 2px, grid 3 kolom sama.
+  Build ini mengikuti brief tertulis Iky, bukan deal Hallmark.
 
 ## Yang tidak dipakai di homepage ini (dan alasannya)
 
-- **rembg** — foto kategori adalah foto suasana, bukan produk yang perlu
-  dipotong latarnya.
+- **Foto stok (Wikimedia/Picsum).** Brief melarang foto stok yang tidak
+  relevan; semua visual kategori sekarang SVG isometrik buatan sendiri.
+- **Reel menyamping (scrolltide reel).** Diganti grid: di build Midnight,
+  reel tidak bergerak di browser pengecek dan kartu 05-06 tidak terjangkau.
+  Grid selalu menampilkan keenam kartu.
+- **rembg** — tidak ada foto produk yang perlu dipotong latarnya.
 - **Scrolltide library builds** — lisensinya melarang redistribusi sebagai
   template; yang dipakai hanya pola scroll-nya (MIT).
-- **prototype** — arah desain sudah dipilih Iky (gelap + 3D).
+- **prototype** — arah desain sudah dipilih Iky (brief tertulis 22:42).
 - **Vercel/deploy-to-vercel** — situs ini di-host di GitHub Pages; deploy
   Vercel urusan agent website nanti.
 - **Canva** — untuk konten sosial/presentasi, bukan kode website.

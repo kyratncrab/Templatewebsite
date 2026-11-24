@@ -5,37 +5,33 @@
       "slug": "kafe-resto",
       "name": "Kafe & Resto",
       "icon": "coffee",
-      "accent": "#7c4a21",
+      "accent": "#2f7bff",
       "description": "Buat kafe, resto, dan tempat ngopi. Menu, jam buka, dan lokasi jelas di satu halaman.",
-      "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Latte_art_3.jpg/960px-Latte_art_3.jpg",
-      "photo_credit": "Foto: Kim Sanso, Wikimedia Commons"
+      "building": "assets/buildings/kafe-resto.svg"
     },
     {
       "slug": "warung-makan",
       "name": "Warung Makan",
       "icon": "utensils",
-      "accent": "#2e7d32",
+      "accent": "#f59e0b",
       "description": "Buat warung makan dan rumah makan. Daftar menu harian dan harga yang gampang dibaca.",
-      "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Basket_of_Vegetables_%28Unsplash%29.jpg/960px-Basket_of_Vegetables_%28Unsplash%29.jpg",
-      "photo_credit": "Foto: Markus Spiske, Wikimedia Commons"
+      "building": "assets/buildings/warung-makan.svg"
     },
     {
       "slug": "butik-fashion",
       "name": "Butik & Fashion",
       "icon": "shirt",
-      "accent": "#be4a6e",
+      "accent": "#a78bfa",
       "description": "Buat butik, toko baju, dan fashion. Katalog produk dengan foto dan harga.",
-      "photo": "https://picsum.photos/id/535/1200/800",
-      "photo_credit": "Foto: Jeff Sheldon, Unsplash"
+      "building": "assets/buildings/butik-fashion.svg"
     },
     {
       "slug": "oleh-oleh",
       "name": "Oleh-Oleh",
       "icon": "gift",
-      "accent": "#b7791f",
+      "accent": "#22d3ee",
       "description": "Buat toko oleh-oleh khas daerah. Produk unggulan dan paket kirim ke luar kota.",
-      "photo": "https://picsum.photos/id/312/1200/800",
-      "photo_credit": "Foto: Sonja Langford, Unsplash"
+      "building": "assets/buildings/oleh-oleh.svg"
     },
     {
       "slug": "jasa",
@@ -43,17 +39,15 @@
       "icon": "wrench",
       "accent": "#2563eb",
       "description": "Buat jasa laundry, servis, salon, dan bengkel. Layanan, tarif, dan cara order yang jelas.",
-      "photo": "https://picsum.photos/id/308/1200/800",
-      "photo_credit": "Foto: Charles L., Unsplash"
+      "building": "assets/buildings/jasa.svg"
     },
     {
       "slug": "toko-kelontong",
       "name": "Toko Kelontong",
       "icon": "store",
-      "accent": "#0f766e",
+      "accent": "#16a34a",
       "description": "Buat toko kelontong dan sembako. Barang harian, harga, dan jam buka toko.",
-      "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Healthy_Grocery_Shopping_%28Unsplash%29.jpg/960px-Healthy_Grocery_Shopping_%28Unsplash%29.jpg",
-      "photo_credit": "Foto: Leonie Wise, Wikimedia Commons"
+      "building": "assets/buildings/toko-kelontong.svg"
     }
   ]
 }

@@ -3,26 +3,30 @@
 Website katalog: tempat memilih gaya (kategori) template website toko.
 Pengunjung memilih kategori dan melihat gayanya. Contoh template tiap kategori segera hadir.
 
-## Desain (tema Midnight 3D, rombak total)
+## Desain (tema Modern 3D Digital World, total redesign)
 
-- Tema Hallmark Midnight: latar biru tengah malam `#02071d`, tinta putih
-  dingin `#e7f0f9`, satu sinyal azure `#6bcbf7`. Palet diverifikasi Leonardo
-  (tinta 17.35:1, muted 8.36:1, azure 10.96:1). Aturan lengkap di `DESIGN.md`.
-  Semua sudut kotak, tanpa grain, tanpa kaca/blur, tanpa gradasi.
-- Hero dunia 3D full-screen: canvas three.js lokal (`js/vendor/three.module.min.js`,
-  three@0.187.0) — lapangan 18 bentuk geometri + bintang + kabut yang
-  mengikuti arah kursor; klik di mana saja meledak jadi partikel (raycast).
-  Judul duduk di tanah gelap di bawah. Tanpa WebGL, hero tetap tampil.
-- Kategori jadi reel menyamping (scrolltide reel): section menempel 340svh,
-  scroll ke bawah menggeser kartu ke samping; kartu di garis fokus tajam,
-  sisanya redup. Di HP jadi geser horizontal biasa.
-- "Cara kerja" jadi log malam: tiga baris bernomor dengan meter 2px yang
-  terisi mengikuti scroll. Penutup: angka "6" besar sebagai pernyataan.
-- Animasi: GSAP lokal (`js/vendor/gsap.min.js`) untuk entrance hero;
-  lottie-web lokal (`js/vendor/lottie.min.js`) untuk petunjuk scroll.
-  Kalau vendor gagal dimuat, semua konten tetap terlihat.
-- Hormati `prefers-reduced-motion`: animasi dan loop 3D dimatikan; reel
-  jadi daftar geser horizontal.
+- Tema Modern 3D Digital World (brief Iky 2026-11-24 22:42): deep navy
+  `#0a1128`, electric blue `#2f7bff`, cyan `#22d3ee`, soft purple `#a78bfa`,
+  putih `#f4f7ff`. Gradasi halus + glassmorphism + bayangan lembut. Palet
+  diverifikasi Leonardo (putih di navy 17.44:1, navy di biru 4.80:1, navy di
+  cyan 10.34:1). Aturan keras: teks di atas gradasi biru-cyan memakai NAVY.
+  Aturan lengkap di `DESIGN.md`. Radius modern: kartu 24px, panel 32px.
+- Hero dunia miniatur 3D: canvas three.js lokal (`js/vendor/three.module.min.js`,
+  three@0.187.0) — pulau mengambang dengan bangunan toko, pohon, lampu,
+  awan, balon, dan bintang; pulau berputar pelan, kamera mengikuti kursor;
+  klik di mana saja meledak jadi partikel (raycast). Judul "Bangun Dunia
+  Digital Bisnismu." di atas langit scene. Tanpa WebGL, kota SVG fallback
+  (`assets/hero-city.svg`) tetap tampil — hero tidak pernah kosong.
+- Kategori jadi grid 3 kolom: setiap kartu punya bangunan isometrik SVG
+  sendiri (`assets/buildings/<slug>.svg`, tanpa foto stok), hover naik +
+  tilt 3D, tombol "Lihat template" ke `templates/<slug>/contoh-1/index.html`.
+- "Cara kerja": tiga kartu kaca bernomor gradasi. Penutup: panel gradasi
+  biru-cyan-ungu dengan tombol putih.
+- Animasi: loader elegan (hilang sendiri lewat CSS), satu loop rAF
+  (progress bar + parallax hero), reveal saat scroll, animasi floating
+  pada bangunan kartu. Kalau JS gagal, semua konten tetap terlihat.
+- Hormati `prefers-reduced-motion`: animasi dan loop 3D dimatikan; scene
+  3D merender satu frame statis.
 
 - **Live (GitHub Pages):** https://kyratncrab.github.io/Templatewebsite/
 
@@ -38,10 +42,12 @@ template-website/
 ├── js/app.js            # pencarian kategori + animasi
 ├── js/vendor/           # three.js, GSAP, lottie-web (lokal, bukan CDN)
 ├── js/hero3d.js         # adegan 3D hero
-├── assets/lottie/       # animasi petunjuk scroll (Lottie JSON)
+├── assets/buildings/    # bangunan isometrik SVG per kategori (tanpa foto stok)
+├── assets/hero-city.svg # kota SVG fallback hero (tampil bila WebGL gagal)
+├── assets/lottie/       # animasi petunjuk scroll lama (tidak dipakai build ini)
 ├── DESIGN.md            # aturan desain (dari koreksi Iky + kombinasi tools)
 ├── assets/icons/        # ikon Lucide (SVG) yang dipakai katalog
-└── templates/           # draf contoh template per kategori (belum ditautkan dari homepage)
+└── templates/           # contoh template per kategori (ditautkan dari homepage)
     └── <slug-kategori>/ # misal: kafe-resto/
         └── contoh-1/    # satu contoh = satu folder, satu file index.html
             └── index.html   # contoh lengkap, gaya inline (self-contained)

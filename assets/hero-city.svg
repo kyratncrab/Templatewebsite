@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img">
+  
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#2f7bff" stop-opacity="0.30"/>
+      <stop offset="60%" stop-color="#22d3ee" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a1128"/><stop offset="100%" stop-color="#101a3a"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="1200" height="620" fill="url(#sky)"/>
+  <circle cx="600" cy="300" r="280" fill="url(#glow)"/>
+  <ellipse cx="600" cy="520" rx="480" ry="34" fill="#05081a" opacity="0.4"/>
+  <g fill="#f4f7ff" opacity="0.9"><ellipse cx="150" cy="90" rx="37" ry="15"/><ellipse cx="128" cy="94" rx="22" ry="11"/><ellipse cx="174" cy="96" rx="20" ry="10"/></g>
+  <g fill="#f4f7ff" opacity="0.9"><ellipse cx="1020" cy="70" rx="31" ry="13"/><ellipse cx="1002" cy="74" rx="18" ry="9"/><ellipse cx="1040" cy="74" rx="16" ry="8"/></g>
+  <g fill="#f4f7ff" opacity="0.9"><ellipse cx="880" cy="150" rx="24" ry="10"/><ellipse cx="866" cy="153" rx="14" ry="7"/><ellipse cx="895" cy="154" rx="13" ry="6"/></g>
+  <polygon points="179.0,499.4 259.5,546.0 259.5,465.4 179.0,418.9" fill="#c8cad1"/>
+    <polygon points="310.5,516.5 259.5,546.0 259.5,465.4 310.5,435.9" fill="#a1a3a8"/>
+    <polygon points="230.0,389.4 310.5,435.9 259.5,465.4 179.0,418.9" fill="#ffffff"/>
+    <polygon points="179.0,418.9 259.5,465.4 244.75,401.4" fill="#2768d8"/>
+    <polygon points="310.5,435.9 259.5,465.4 244.75,401.4" fill="#1f53ad"/>
+    <polygon points="219.8,431.9 207.0,439.2 207.0,418.8 219.8,411.4" fill="#ffd166" opacity="0.95"/>
+    <polygon points="223.3,481.0 243.4,492.6 243.4,472.2 223.3,460.5" fill="#7dd3fc" opacity="0.95"/>
+  <polygon points="416.3,521.0 507.6,573.7 507.6,462.1 416.3,409.4" fill="#c3bcd1"/>
+    <polygon points="561.3,542.7 507.6,573.7 507.6,462.1 561.3,431.1" fill="#9d97a8"/>
+    <polygon points="470.0,378.4 561.3,431.1 507.6,462.1 416.3,409.4" fill="#fdf3ff"/>
+    <polygon points="416.3,409.4 507.6,462.1 488.8,394.25" fill="#8d76d4"/>
+    <polygon points="561.3,431.1 507.6,462.1 488.8,394.25" fill="#715eaa"/>
+    <polygon points="459.3,434.8 445.8,442.6 445.8,414.7 459.3,406.9" fill="#ffd166" opacity="0.95"/>
+    <polygon points="466.5,488.6 489.3,501.8 489.3,473.9 466.5,460.7" fill="#7dd3fc" opacity="0.95"/>
+  <polygon points="669.0,509.4 749.5,556.0 749.5,463.0 669.0,416.4" fill="#d1bfa4"/>
+    <polygon points="800.5,526.5 749.5,556.0 749.5,463.0 800.5,433.5" fill="#a89984"/>
+    <polygon points="720.0,387.0 800.5,433.5 749.5,463.0 669.0,416.4" fill="#fff6d5"/>
+    <polygon points="669.0,416.4 749.5,463.0 734.75,399.0" fill="#1cb3ca"/>
+    <polygon points="800.5,433.5 749.5,463.0 734.75,399.0" fill="#178fa1"/>
+    <polygon points="709.8,435.1 697.0,442.4 697.0,418.9 709.8,411.5" fill="#ffd166" opacity="0.95"/>
+    <polygon points="713.3,484.2 733.4,495.8 733.4,472.2 713.3,460.6" fill="#7dd3fc" opacity="0.95"/>
+  <polygon points="901.7,527.9 976.8,571.3 976.8,503.1 901.7,459.7" fill="#bfccc3"/>
+    <polygon points="1025.2,543.4 976.8,571.3 976.8,503.1 1025.2,475.2" fill="#99a49d"/>
+    <polygon points="950.0,431.8 1025.2,475.2 976.8,503.1 901.7,459.7" fill="#f6fffc"/>
+    <polygon points="901.7,459.7 976.8,503.1 963.4,441.45000000000005" fill="#35935a"/>
+    <polygon points="1025.2,475.2 976.8,503.1 963.4,441.45000000000005" fill="#2a7648"/>
+    <polygon points="940.3,468.4 928.3,475.4 928.3,458.0 940.3,451.0" fill="#ffd166" opacity="0.95"/>
+    <polygon points="943.0,514.6 961.8,525.4 961.8,508.1 943.0,497.2" fill="#7dd3fc" opacity="0.95"/>
+  <path d="M 120 194 L 122.4 197.6 L 126 200 L 122.4 202.4 L 120 206 L 117.6 202.4 L 114 200 L 117.6 197.6 Z" fill="#7dd3fc"/>
+  <path d="M 1080 213 L 1082.8 217.2 L 1087 220 L 1082.8 222.8 L 1080 227 L 1077.2 222.8 L 1073 220 L 1077.2 217.2 Z" fill="#a78bfa"/>
+  <path d="M 620 105 L 622.0 108.0 L 625 110 L 622.0 112.0 L 620 115 L 618.0 112.0 L 615 110 L 618.0 108.0 Z" fill="#7dd3fc"/>
+  <path d="M 340 146 L 341.6 148.4 L 344 150 L 341.6 151.6 L 340 154 L 338.4 151.6 L 336 150 L 338.4 148.4 Z" fill="#7dd3fc"/>
+</svg>
