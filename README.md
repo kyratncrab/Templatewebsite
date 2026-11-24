@@ -3,6 +3,16 @@
 Website katalog: tempat memilih gaya (kategori) template website toko.
 Pengunjung memilih kategori dan melihat gayanya. Contoh template tiap kategori segera hadir.
 
+## Desain (tema gelap + 3D)
+
+- Tema gelap modern, tanpa warna cerah: latar `#0a0a0d`, teks gading, satu aksen emas redup `#c9a25e`.
+- Hero: canvas three.js (`js/hero3d.js`, three@0.187.0 via CDN importmap) — kristal melayang, cincin orbit,
+  satelit, dan partikel yang mengikuti arah kursor; klik memberi efek denyut. Tanpa WebGL, hero tetap
+  tampil (teks terbaca, animasi dilewati).
+- Animasi: GSAP 3.12.5 + ScrollTrigger via CDN (`js/app.js`) — hero masuk sekali saat load, kartu dan
+  langkah muncul saat di-scroll. Kalau CDN gagal, semua konten tetap terlihat.
+- Hormati `prefers-reduced-motion`: animasi dan loop 3D dimatikan.
+
 - **Live (GitHub Pages):** https://kyratncrab.github.io/Templatewebsite/
 
 ## Struktur folder
