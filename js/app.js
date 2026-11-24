@@ -3,7 +3,8 @@
 // (reveal hanya disembunyikan bila class .js ada di <html>).
 (function () {
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var fine = window.matchMedia("(pointer: fine)").matches;
+  var fine = window.matchMedia("(pointer: fine)").matches ||
+    window.matchMedia("(hover: hover)").matches;
   var wide = window.matchMedia("(min-width: 1024px)").matches;
   function clamp(v, min, max) { return Math.min(max, Math.max(min, v)); }
 

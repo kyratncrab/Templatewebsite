@@ -23,7 +23,7 @@ if (canvas) {
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 80);
-    camera.position.set(0, 3.6, wide ? 11.5 : 13.5);
+    camera.position.set(0, 5.6, wide ? 14.5 : 17);
 
     // ---- pencahayaan ----
     scene.add(new THREE.AmbientLight(0xffffff, 0.55));
@@ -41,9 +41,10 @@ if (canvas) {
     rim.position.set(-7, 4, -6);
     scene.add(rim);
 
-    // ---- pulau ----
+    // ---- pulau (panggung di bawah: teks hero hidup di langit gelap di atas) ----
     const world = new THREE.Group();
-    world.position.y = -1.7;
+    world.position.y = -4.2;
+    world.scale.setScalar(0.8);
     scene.add(world);
 
     const std = (c, r = 0.85, e = 0x000000, ei = 0) =>
@@ -108,15 +109,15 @@ if (canvas) {
     awn.position.set(0, 0.72, 0.78); awn.rotation.x = 0.25; awn.castShadow = true;
     cafe.add(awn);
     building(2.5, 0.9, 1.35, 1.0, 1.1, 0xefe6ff, 0xa78bfa, 'flat', -0.4);
-    building(0.4, -1.9, 1.25, 1.3, 1.05, 0xffe9c9, 0x22d3ee, 'pyramid', 0.1);
+    building(0.4, -1.2, 1.25, 1.3, 1.05, 0xffe9c9, 0x22d3ee, 'pyramid', 0.1);
     building(-0.6, 2.3, 1.1, 0.9, 0.95, 0xe9f9ee, 0x3fae6a, 'flat', 0.9);
-    building(1.2, -2.6, 1.0, 0.85, 0.9, 0xf4f7ff, 0x2f7bff, 'pyramid', -0.7);
-    const tower = building(2.9, -1.6, 0.85, 2.1, 0.85, 0xdbeafe, 0x22d3ee, 'flat', 0.3);
+    building(1.2, -1.6, 1.0, 0.85, 0.9, 0xf4f7ff, 0x2f7bff, 'pyramid', -0.7);
+    const tower = building(2.9, -0.8, 0.85, 1.3, 0.85, 0xdbeafe, 0x22d3ee, 'flat', 0.3);
     const tip = new THREE.Mesh(new THREE.SphereGeometry(0.16, 16, 16), std(0x22d3ee, 0.3, 0x22d3ee, 1));
-    tip.position.y = 2.45;
+    tip.position.y = 1.6;
     tower.add(tip);
     const antenna = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 0.5, 8), std(0x93a5cf, 0.6));
-    antenna.position.y = 2.3;
+    antenna.position.y = 1.5;
     tower.add(antenna);
 
     // ---- pohon + lampu ----
@@ -191,7 +192,7 @@ if (canvas) {
     // ---- ledakan klik ----
     const raycaster = new THREE.Raycaster();
     const pointer = new THREE.Vector2();
-    const plane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 1.0);
+    const plane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 2.6);
     const bursts = [];
     const burstCols = [0x22d3ee, 0x2f7bff, 0xa78bfa, 0xf4f7ff];
     function burst(point) {
@@ -258,8 +259,8 @@ if (canvas) {
       balloon.rotation.z = Math.sin(t * 0.5) * 0.06;
       mx += (tx - mx) * 0.05; my += (ty - my) * 0.05;
       camera.position.x = mx * 0.9;
-      camera.position.y = 3.6 - my * 0.4;
-      camera.lookAt(0, -0.6, 0);
+      camera.position.y = 5.6 - my * 0.4;
+      camera.lookAt(0, -2.4, 0);
       for (let i = bursts.length - 1; i >= 0; i--) {
         const b = bursts[i];
         const arr = b.pts.geometry.attributes.position;
