@@ -121,3 +121,56 @@ berikutnya; kalau ada yang bertentangan, aturan Iky yang terbaru menang.
 - **Vercel/deploy-to-vercel** — situs ini di-host di GitHub Pages; deploy
   Vercel urusan agent website nanti.
 - **Canva** — untuk konten sosial/presentasi, bukan kode website.
+
+8. **Redesign editorial: bukan AI slop, bukan kartun, tanpa contoh dulu.**
+   (Iky, 2026-11-24 23:33: "jelek terlalu ai slop dan carton, redisgn home
+   page nya, jangan taruh contoh template dulu, pokus bangun home page")
+   Aturan ini MENGGANTIKAN aturan 7 (World) dan MENGEMBALIKAN aturan 4:
+   tidak ada lagi link "Lihat template" ke `templates/` di homepage mana pun;
+   contoh template tetap ada sebagai draf di `templates/` tapi belum ditautkan.
+   Homepage dibangun ulang sebagai katalog editorial terang: kertas hangat,
+   tinta, satu aksen vermilion, serif Fraunces + Inter, garis hairline,
+   sudut kotak, satu foto asli (keranjang sayur, Markus Spiske). TANPA:
+   3D kartun, gradasi, kaca, bayangan, loader, tilt, parallax, reveal
+   saat scroll, ungu. Kategori jadi daftar indeks bernomor (bukan kartu);
+   cara kerja jadi tiga langkah bernomor; penutup satu kalimat.
+
+## Sistem (redesign editorial, 2026-11-24 23:3x)
+
+- **Tema: Editorial terang.** Kertas `#faf7f1`, tinta `#1a1712`, muted
+  `#6f6a5e`, aksen vermilion `#c2410c`, garis `#e4ded1`. Datar: tanpa
+  gradasi, tanpa kaca, tanpa bayangan, radius 0. Font Fraunces (display
+  600/700) + Inter (body 400/500/600).
+- **Palet diverifikasi (chroma).** Tinta/kertas 16.71:1, muted/kertas
+  5.04:1, aksen/kertas 4.84:1, kertas/tinta 16.71:1 (semua lulus WCAG AA).
+  Token ada di `:root` `css/style.css`.
+- **Hero: tipografi + satu foto asli.** Judul "Website toko, siap
+  dipakai." (baris kedua aksen vermilion, roman — bukan italic),
+  satu kalimat lead 11 kata, search kotak (input border tinta + tombol
+  tinta solid), lalu foto keranjang sayur full-width (16/7, square).
+  Kredit foto di footer, bukan di bawah foto.
+- **Kategori: daftar indeks bernomor 01-06.** Bukan kartu, bukan grid:
+  baris dengan garis hairline, nomor Fraunces aksen, nama serif 28px,
+  deskripsi muted. Hover: latar kertas-2 + nama jadi aksen. Tanpa link,
+  tanpa tombol, tanpa gambar. Di bawah daftar: "Contoh template untuk
+  setiap kategori sedang disiapkan."
+- **Cara kerja: 3 langkah bernomor** dengan garis atas 2px tinta.
+  Penutup: satu kalimat serif + tombol tinta "Cari kategori".
+- **Pencarian.** Filter langsung saat mengetik (data-cari + teks baris);
+  submit form (`?cari=`) ikut memfilter saat halaman dimuat; state kosong
+  + tombol reset. Search tetap di hero.
+- **Tanpa JS berat.** Hanya `js/app.js` (pencarian). Tidak ada canvas,
+  tidak ada three.js, tidak ada loader, tidak ada reveal/tilt/parallax.
+  Font dari Google Fonts; satu foto remote (Wikimedia, terverifikasi 200).
+- **Sloplint.** Perbaikan nyata diterapkan (overflow-x clip, outline
+  focus, skala spasi 4px, tabular-nums, :active, lead 11 kata, tanpa
+  eyebrow/label, tanpa em di h1, tanpa em dash). Di-waive: FAIL 20 (bukan
+  tema Hallmark, tidak ada stamp tema); REFLEX 38iii (kata aksen di judul
+  hero adalah signature, sekali saja); REFLEX 26b :disabled (tidak ada
+  kontrol disabled).
+- **File lama yang tidak lagi dipakai homepage (tetap ada di repo karena
+  snapshot push tidak bisa menghapus):** `js/hero3d.js`,
+  `js/vendor/three.module.min.js` + `three.core.js`, `js/vendor/gsap*`,
+  `js/vendor/lottie*`, `assets/buildings/`, `assets/hero-city.svg`.
+  File `templates/<slug>/contoh-1/index.html` tetap ada tapi TIDAK
+  ditautkan dari homepage sampai Iky bilang siap.

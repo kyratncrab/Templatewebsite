@@ -2,243 +2,133 @@
 <html lang="id">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Katalog Template Website Toko: Bangun Dunia Digital Bisnismu</title>
-<meta name="description" content="Enam template website toko dalam dunia 3D: kafe, warung makan, butik, oleh-oleh, jasa, dan toko kelontong. Pilih gayanya, sesuaikan datanya, langsung jadi.">
-<meta name="theme-color" content="#0a1128">
-<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Katalog Template Website Toko</title>
+<meta name="description" content="Template website satu halaman untuk kafe, warung makan, butik, oleh-oleh, jasa, dan toko kelontong. Pilih kategorinya, isi datanya, website langsung jadi.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
-<link rel="icon" href="assets/icons/store.svg">
-<script type="importmap">
-{ "imports": { "three": "./js/vendor/three.module.min.js" } }
-</script>
 </head>
 <body>
-<a class="skip" href="#kategori">Lewati ke kategori</a>
-
-<div class="loader" id="loader" aria-hidden="true">
-  <div class="loader-mark"><img src="assets/icons/store.svg" alt="" width="28" height="28"></div>
-  <p class="loader-text">Katalog Template</p>
-  <div class="loader-bar"><span></span></div>
-</div>
-
-<div class="progress" id="progress" aria-hidden="true"></div>
-
-<header class="site">
-  <div class="wrap">
-    <a class="logo" href="#atas">
-      <span class="logo-mark"><img src="assets/icons/store.svg" alt="" width="20" height="20"></span>
-      Katalog <span>Template</span>
-    </a>
-    <nav class="main" aria-label="Navigasi utama">
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="#">Katalog <span>Template</span></a>
+    <nav aria-label="Navigasi utama">
       <a href="#kategori">Kategori</a>
       <a href="#cara-kerja">Cara kerja</a>
-      <a class="nav-cta" href="#kategori">Pilih Template</a>
     </nav>
   </div>
 </header>
 
-<main id="atas">
-  <section class="hero" id="hero">
-    <img class="hero-fallback" id="hero-fallback" src="assets/hero-city.svg" alt="" aria-hidden="true">
-    <canvas id="world" aria-hidden="true"></canvas>
-    <div class="hero-glow" aria-hidden="true"></div>
-    <div class="wrap hero-content">
-      <p class="badge"><img src="assets/icons/sparkles.svg" alt="" width="15" height="15"> 6 gaya website toko &middot; dalam satu dunia 3D</p>
-      <h1>Bangun <span class="grad">Dunia Digital</span><br>Bisnismu.</h1>
-      <p class="lead">Enam template website toko untuk kafe, warung makan, butik, oleh-oleh, jasa, dan toko kelontong. Pilih gayanya, sesuaikan dengan data tokomu, langsung jadi.</p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="#kategori">Lihat Kategori <img src="assets/icons/arrow-right.svg" alt="" width="18" height="18"></a>
-        <a class="btn btn-glass" href="#cara-kerja">Cara Kerja</a>
-      </div>
-      <form class="search" id="search" role="search" action="#kategori" method="get">
-        <img src="assets/icons/search.svg" alt="" width="20" height="20">
-        <label class="sr-only" for="cari">Cari kategori</label>
-        <input id="cari" name="cari" type="search" placeholder="Cari template: kafe, butik, laundry..." autocomplete="off">
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <h1>Website toko,<br><span class="accent">siap dipakai.</span></h1>
+      <p class="lead">Template satu halaman untuk kafe, warung, butik, oleh-oleh, jasa, dan kelontong.</p>
+      <form class="search" id="search" role="search" action="#kategori">
+        <label class="visually-hidden" for="cari">Cari kategori template</label>
+        <input id="cari" name="cari" type="search" placeholder="Cari kategori: kafe, butik, laundry…" autocomplete="off">
         <button type="submit">Cari</button>
       </form>
-      <ul class="hero-facts">
-        <li><img src="assets/icons/check.svg" alt="" width="15" height="15"> Tanpa coding</li>
-        <li><img src="assets/icons/check.svg" alt="" width="15" height="15"> Satu halaman per toko</li>
-        <li><img src="assets/icons/check.svg" alt="" width="15" height="15"> Bisa dilihat dulu contohnya</li>
-      </ul>
+      <figure class="hero-photo">
+        <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Basket_of_Vegetables_%28Unsplash%29.jpg/960px-Basket_of_Vegetables_%28Unsplash%29.jpg" alt="Keranjang berisi sayuran segar di pasar" width="960" height="640" loading="eager">
+      </figure>
     </div>
-    <a class="scroll-cue" href="#kategori" aria-label="Geser ke kategori"><span></span></a>
   </section>
 
-  <section class="kategori" id="kategori" aria-labelledby="kategori-judul">
+  <section class="kategori" id="kategori">
     <div class="wrap">
-      <header class="section-head" data-reveal>
-        <p class="eyebrow">Kategori Template</p>
-        <h2 id="kategori-judul">Pilih dunia tokomu.</h2>
-        <p class="section-sub">Setiap kategori punya bangunan 3D-nya sendiri. Arahkan kursor ke kartu untuk melihatnya bergerak, lalu klik untuk melihat contoh templatenya.</p>
-      </header>
-      <div class="grid" id="grid">
-
-        <article class="cat-card" data-cari="kafe resto kopi ngopi menu" data-reveal>
-          <figure class="cat-visual v-kafe">
-            <img class="bangunan" src="assets/buildings/kafe-resto.svg" alt="Ilustrasi 3D kafe" width="400" height="300" loading="lazy">
-            <span class="cat-num">01</span>
-          </figure>
-          <div class="cat-body">
-            <div class="cat-title">
-              <span class="cat-icon"><img src="assets/icons/coffee.svg" alt="" width="20" height="20"></span>
-              <h3>Kafe &amp; Resto</h3>
-            </div>
+      <h2>Enam jenis toko.</h2>
+      <p class="section-intro">Setiap kategori punya satu gaya template satu halaman. Contoh template untuk setiap kategori sedang disiapkan.</p>
+      <ul class="index" id="index">
+        <li class="index-row" data-cari="kafe resto kopi restoran menu jam buka lokasi">
+          <span class="index-num" aria-hidden="true">01</span>
+          <div>
+            <h3>Kafe &amp; Resto</h3>
             <p>Buat kafe, resto, dan tempat ngopi. Menu, jam buka, dan lokasi jelas di satu halaman.</p>
-            <ul class="chips"><li>Menu</li><li>Galeri</li><li>Lokasi</li></ul>
-            <a class="btn btn-card" href="templates/kafe-resto/contoh-1/index.html">Lihat template <img src="assets/icons/arrow-right.svg" alt="" width="16" height="16"></a>
           </div>
-        </article>
-
-        <article class="cat-card" data-cari="warung makan rumah makan menu harian harga" data-reveal>
-          <figure class="cat-visual v-warung">
-            <img class="bangunan" src="assets/buildings/warung-makan.svg" alt="Ilustrasi 3D warung makan" width="400" height="300" loading="lazy">
-            <span class="cat-num">02</span>
-          </figure>
-          <div class="cat-body">
-            <div class="cat-title">
-              <span class="cat-icon"><img src="assets/icons/utensils.svg" alt="" width="20" height="20"></span>
-              <h3>Warung Makan</h3>
-            </div>
+        </li>
+        <li class="index-row" data-cari="warung makan rumah makan depot menu harian harga">
+          <span class="index-num" aria-hidden="true">02</span>
+          <div>
+            <h3>Warung Makan</h3>
             <p>Buat warung makan dan rumah makan. Daftar menu harian dan harga yang gampang dibaca.</p>
-            <ul class="chips"><li>Menu harian</li><li>Harga</li><li>Jam buka</li></ul>
-            <a class="btn btn-card" href="templates/warung-makan/contoh-1/index.html">Lihat template <img src="assets/icons/arrow-right.svg" alt="" width="16" height="16"></a>
           </div>
-        </article>
-
-        <article class="cat-card" data-cari="butik fashion baju pakaian toko baju katalog" data-reveal>
-          <figure class="cat-visual v-butik">
-            <img class="bangunan" src="assets/buildings/butik-fashion.svg" alt="Ilustrasi 3D butik fashion" width="400" height="300" loading="lazy">
-            <span class="cat-num">03</span>
-          </figure>
-          <div class="cat-body">
-            <div class="cat-title">
-              <span class="cat-icon"><img src="assets/icons/shirt.svg" alt="" width="20" height="20"></span>
-              <h3>Butik &amp; Fashion</h3>
-            </div>
+        </li>
+        <li class="index-row" data-cari="butik fashion toko baju katalog produk foto harga">
+          <span class="index-num" aria-hidden="true">03</span>
+          <div>
+            <h3>Butik &amp; Fashion</h3>
             <p>Buat butik, toko baju, dan fashion. Katalog produk dengan foto dan harga.</p>
-            <ul class="chips"><li>Katalog</li><li>Harga</li><li>Kontak</li></ul>
-            <a class="btn btn-card" href="templates/butik-fashion/contoh-1/index.html">Lihat template <img src="assets/icons/arrow-right.svg" alt="" width="16" height="16"></a>
           </div>
-        </article>
-
-        <article class="cat-card" data-cari="oleh-oleh khas daerah souvenir hadiah paket kirim" data-reveal>
-          <figure class="cat-visual v-oleh">
-            <img class="bangunan" src="assets/buildings/oleh-oleh.svg" alt="Ilustrasi 3D toko oleh-oleh" width="400" height="300" loading="lazy">
-            <span class="cat-num">04</span>
-          </figure>
-          <div class="cat-body">
-            <div class="cat-title">
-              <span class="cat-icon"><img src="assets/icons/gift.svg" alt="" width="20" height="20"></span>
-              <h3>Oleh-Oleh</h3>
-            </div>
+        </li>
+        <li class="index-row" data-cari="oleh-oleh khas daerah produk unggulan paket kirim">
+          <span class="index-num" aria-hidden="true">04</span>
+          <div>
+            <h3>Oleh-Oleh</h3>
             <p>Buat toko oleh-oleh khas daerah. Produk unggulan dan paket kirim ke luar kota.</p>
-            <ul class="chips"><li>Produk</li><li>Paket</li><li>Kirim</li></ul>
-            <a class="btn btn-card" href="templates/oleh-oleh/contoh-1/index.html">Lihat template <img src="assets/icons/arrow-right.svg" alt="" width="16" height="16"></a>
           </div>
-        </article>
-
-        <article class="cat-card" data-cari="jasa laundry servis salon bengkel layanan tarif order" data-reveal>
-          <figure class="cat-visual v-jasa">
-            <img class="bangunan" src="assets/buildings/jasa.svg" alt="Ilustrasi 3D jasa laundry" width="400" height="300" loading="lazy">
-            <span class="cat-num">05</span>
-          </figure>
-          <div class="cat-body">
-            <div class="cat-title">
-              <span class="cat-icon"><img src="assets/icons/wrench.svg" alt="" width="20" height="20"></span>
-              <h3>Jasa</h3>
-            </div>
+        </li>
+        <li class="index-row" data-cari="jasa laundry servis salon bengkel layanan tarif order">
+          <span class="index-num" aria-hidden="true">05</span>
+          <div>
+            <h3>Jasa</h3>
             <p>Buat jasa laundry, servis, salon, dan bengkel. Layanan, tarif, dan cara order yang jelas.</p>
-            <ul class="chips"><li>Layanan</li><li>Tarif</li><li>Order</li></ul>
-            <a class="btn btn-card" href="templates/jasa/contoh-1/index.html">Lihat template <img src="assets/icons/arrow-right.svg" alt="" width="16" height="16"></a>
           </div>
-        </article>
-
-        <article class="cat-card" data-cari="toko kelontong sembako barang harian warung" data-reveal>
-          <figure class="cat-visual v-kelontong">
-            <img class="bangunan" src="assets/buildings/toko-kelontong.svg" alt="Ilustrasi 3D toko kelontong" width="400" height="300" loading="lazy">
-            <span class="cat-num">06</span>
-          </figure>
-          <div class="cat-body">
-            <div class="cat-title">
-              <span class="cat-icon"><img src="assets/icons/store.svg" alt="" width="20" height="20"></span>
-              <h3>Toko Kelontong</h3>
-            </div>
+        </li>
+        <li class="index-row" data-cari="toko kelontong sembako barang harian harga jam buka">
+          <span class="index-num" aria-hidden="true">06</span>
+          <div>
+            <h3>Toko Kelontong</h3>
             <p>Buat toko kelontong dan sembako. Barang harian, harga, dan jam buka toko.</p>
-            <ul class="chips"><li>Sembako</li><li>Harga</li><li>Jam buka</li></ul>
-            <a class="btn btn-card" href="templates/toko-kelontong/contoh-1/index.html">Lihat template <img src="assets/icons/arrow-right.svg" alt="" width="16" height="16"></a>
           </div>
-        </article>
-
-      </div>
+        </li>
+      </ul>
       <div class="kosong" id="kosong" hidden>
-        <p>Tidak ada kategori yang cocok dengan pencarianmu.</p>
-        <button class="btn btn-glass" id="reset-cari" type="button">Tampilkan semua kategori</button>
+        <p>Tidak ada kategori yang cocok dengan “<span id="kosong-kata"></span>”.</p>
+        <button type="button" id="reset-cari">Tampilkan semua kategori</button>
       </div>
     </div>
   </section>
 
-  <section class="cara" id="cara-kerja" aria-labelledby="cara-judul">
+  <section class="cara-kerja" id="cara-kerja">
     <div class="wrap">
-      <header class="section-head" data-reveal>
-        <p class="eyebrow">Cara Kerja</p>
-        <h2 id="cara-judul">Tiga langkah, website jadi.</h2>
-        <p class="section-sub">Tidak perlu bisa coding. Pilih, isi data tokomu, dan website siap dipakai.</p>
-      </header>
+      <h2>Tiga langkah, website jadi.</h2>
       <ol class="steps">
-        <li data-reveal>
-          <span class="step-num">01</span>
-          <span class="step-icon"><img src="assets/icons/search.svg" alt="" width="22" height="22"></span>
+        <li>
+          <span class="step-num" aria-hidden="true">01</span>
           <h3>Pilih kategori</h3>
-          <p>Cari kategori yang paling cocok dengan usahamu, lalu lihat contoh templatenya.</p>
+          <p>Cari kategori yang paling dekat dengan usahamu.</p>
         </li>
-        <li data-reveal>
-          <span class="step-num">02</span>
-          <span class="step-icon"><img src="assets/icons/pen-line.svg" alt="" width="22" height="22"></span>
+        <li>
+          <span class="step-num" aria-hidden="true">02</span>
           <h3>Sesuaikan datanya</h3>
-          <p>Nama toko, alamat, menu atau produk, harga, dan foto diisi sesuai data tokomu.</p>
+          <p>Nama toko, alamat, menu atau produk, foto, dan jam buka.</p>
         </li>
-        <li data-reveal>
-          <span class="step-num">03</span>
-          <span class="step-icon"><img src="assets/icons/check.svg" alt="" width="22" height="22"></span>
+        <li>
+          <span class="step-num" aria-hidden="true">03</span>
           <h3>Website siap dipakai</h3>
-          <p>Website satu halamanmu jadi dan bisa langsung dibagikan ke pelanggan.</p>
+          <p>Satu halaman, langsung bisa dibagikan ke pelanggan.</p>
         </li>
       </ol>
     </div>
   </section>
 
-  <section class="penutup" aria-labelledby="penutup-judul">
+  <section class="penutup">
     <div class="wrap">
-      <div class="penutup-panel" data-reveal>
-        <h2 id="penutup-judul">Siap bangun duniamu?</h2>
-        <p>Enam gaya. Satu halaman untuk setiap toko. Pilih satu, langsung jadi.</p>
-        <a class="btn btn-panel" href="#kategori">Pilih Kategori <img src="assets/icons/arrow-right.svg" alt="" width="18" height="18"></a>
-      </div>
+      <h2>Punya toko? Website-nya bisa jadi hari ini.</h2>
+      <a class="btn" href="#kategori">Cari kategori</a>
     </div>
   </section>
 </main>
 
-<footer class="site">
+<footer class="site-footer">
   <div class="wrap">
-    <a class="logo" href="#atas">
-      <span class="logo-mark"><img src="assets/icons/store.svg" alt="" width="20" height="20"></span>
-      Katalog <span>Template</span>
-    </a>
-    <p>Katalog Template Website Toko &middot; 6 gaya, satu halaman untuk setiap toko.</p>
-    <nav aria-label="Navigasi bawah">
-      <a href="#kategori">Kategori</a>
-      <a href="#cara-kerja">Cara kerja</a>
-      <a href="#atas">Ke atas</a>
-    </nav>
+    <p>Katalog Template Website Toko. Foto: Markus Spiske (Wikimedia Commons). Foto contoh, bukan foto toko sebenarnya. Contoh template sedang disiapkan.</p>
   </div>
 </footer>
 
-<script type="module" src="js/hero3d.js"></script>
-<script src="js/app.js"></script>
+<script src="js/app.js" defer></script>
 </body>
 </html>

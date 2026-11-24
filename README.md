@@ -3,30 +3,35 @@
 Website katalog: tempat memilih gaya (kategori) template website toko.
 Pengunjung memilih kategori dan melihat gayanya. Contoh template tiap kategori segera hadir.
 
-## Desain (tema Modern 3D Digital World, total redesign)
+## Desain (tema Editorial terang, redesign 2026-11-24)
 
-- Tema Modern 3D Digital World (brief Iky 2026-11-24 22:42): deep navy
-  `#0a1128`, electric blue `#2f7bff`, cyan `#22d3ee`, soft purple `#a78bfa`,
-  putih `#f4f7ff`. Gradasi halus + glassmorphism + bayangan lembut. Palet
-  diverifikasi Leonardo (putih di navy 17.44:1, navy di biru 4.80:1, navy di
-  cyan 10.34:1). Aturan keras: teks di atas gradasi biru-cyan memakai NAVY.
-  Aturan lengkap di `DESIGN.md`. Radius modern: kartu 24px, panel 32px.
-- Hero dunia miniatur 3D: canvas three.js lokal (`js/vendor/three.module.min.js`,
-  three@0.187.0) — pulau mengambang dengan bangunan toko, pohon, lampu,
-  awan, balon, dan bintang; pulau berputar pelan, kamera mengikuti kursor;
-  klik di mana saja meledak jadi partikel (raycast). Judul "Bangun Dunia
-  Digital Bisnismu." di atas langit scene. Tanpa WebGL, kota SVG fallback
-  (`assets/hero-city.svg`) tetap tampil — hero tidak pernah kosong.
-- Kategori jadi grid 3 kolom: setiap kartu punya bangunan isometrik SVG
-  sendiri (`assets/buildings/<slug>.svg`, tanpa foto stok), hover naik +
-  tilt 3D, tombol "Lihat template" ke `templates/<slug>/contoh-1/index.html`.
-- "Cara kerja": tiga kartu kaca bernomor gradasi. Penutup: panel gradasi
-  biru-cyan-ungu dengan tombol putih.
-- Animasi: loader elegan (hilang sendiri lewat CSS), satu loop rAF
-  (progress bar + parallax hero), reveal saat scroll, animasi floating
-  pada bangunan kartu. Kalau JS gagal, semua konten tetap terlihat.
-- Hormati `prefers-reduced-motion`: animasi dan loop 3D dimatikan; scene
-  3D merender satu frame statis.
+- Tema Editorial terang (arahan Iky 23:33: bukan AI slop, bukan kartun,
+  tanpa contoh template dulu, fokus homepage): kertas hangat `#faf7f1`,
+  tinta `#1a1712`, muted `#6f6a5e`, satu aksen vermilion `#c2410c`,
+  garis hairline `#e4ded1`. Datar, tanpa gradasi, tanpa kaca, tanpa
+  bayangan, radius 0, tanpa ungu. Palet diverifikasi (chroma): tinta di
+  kertas 16.71:1, muted di kertas 5.04:1, aksen di kertas 4.84:1.
+  Aturan lengkap di `DESIGN.md` (aturan 8).
+- Hero tipografi + satu foto asli: judul "Website toko, siap dipakai."
+  (baris kedua aksen vermilion), lead 11 kata, search kotak (input border
+  tinta + tombol tinta solid), foto keranjang sayur full-width (Markus
+  Spiske, Wikimedia Commons, kredit di footer). Tanpa canvas 3D, tanpa
+  loader, tanpa animasi scroll.
+- Kategori jadi daftar indeks bernomor 01-06 (bukan kartu/grid): nomor
+  Fraunces aksen, nama serif, deskripsi muted, garis hairline. Hover:
+  latar kertas-2 + nama jadi aksen. Tanpa link, tanpa tombol, tanpa
+  gambar. Contoh template TIDAK ditautkan dari homepage (draf tetap ada
+  di `templates/`).
+- "Cara kerja": tiga langkah bernomor dengan garis atas 2px tinta.
+  Penutup: satu kalimat serif + tombol tinta "Cari kategori".
+- Pencarian: filter langsung saat mengetik (data-cari + teks baris),
+  `?cari=` saat halaman dimuat, state kosong + tombol reset.
+- Sloplint: 1 FAIL + 2 REFLEX di-waive dan didokumentasikan di header
+  `css/style.css` (bukan tema Hallmark; kata aksen signature sekali di
+  hero; tidak ada kontrol disabled). Sisanya diperbaiki.
+- File lama yang tidak lagi dipakai homepage (tetap ada di repo karena
+  snapshot push tidak bisa menghapus): `js/hero3d.js`, `js/vendor/`
+  (three.js, GSAP, lottie), `assets/buildings/`, `assets/hero-city.svg`.
 
 - **Live (GitHub Pages):** https://kyratncrab.github.io/Templatewebsite/
 
@@ -39,15 +44,15 @@ template-website/
 ├── data/catalog.json    # daftar kategori + contoh (untuk dibaca mesin/agent)
 ├── index.html           # halaman katalog
 ├── css/style.css        # gaya halaman katalog
-├── js/app.js            # pencarian kategori + animasi
-├── js/vendor/           # three.js, GSAP, lottie-web (lokal, bukan CDN)
-├── js/hero3d.js         # adegan 3D hero
-├── assets/buildings/    # bangunan isometrik SVG per kategori (tanpa foto stok)
-├── assets/hero-city.svg # kota SVG fallback hero (tampil bila WebGL gagal)
+├── js/app.js            # pencarian kategori (satu-satunya JS homepage)
+├── js/vendor/           # three.js, GSAP, lottie-web — LEGACY, tidak dipakai homepage ini
+├── js/hero3d.js         # adegan 3D hero — LEGACY, tidak dipakai homepage ini
+├── assets/buildings/    # bangunan isometrik SVG — LEGACY, tidak dipakai homepage ini
+├── assets/hero-city.svg # kota SVG fallback hero — LEGACY, tidak dipakai homepage ini
 ├── assets/lottie/       # animasi petunjuk scroll lama (tidak dipakai build ini)
 ├── DESIGN.md            # aturan desain (dari koreksi Iky + kombinasi tools)
 ├── assets/icons/        # ikon Lucide (SVG) yang dipakai katalog
-└── templates/           # contoh template per kategori (ditautkan dari homepage)
+└── templates/           # contoh template per kategori (DRAF, belum ditautkan dari homepage)
     └── <slug-kategori>/ # misal: kafe-resto/
         └── contoh-1/    # satu contoh = satu folder, satu file index.html
             └── index.html   # contoh lengkap, gaya inline (self-contained)
@@ -59,7 +64,7 @@ Contoh template tiap kategori belum ditautkan dari homepage; drafnya ada di `tem
 ## Menambah kategori baru
 
 1. Tambah entri di `data/catalog.json` (slug, nama, ikon, warna, deskripsi).
-2. Tambah kartu di `index.html` (bagian `#grid-kategori`) dan blok detail di bawahnya.
+2. Tambah baris di `index.html` (daftar `#index`).
 3. Buat folder `templates/<slug>/contoh-1/index.html` dengan contoh lengkap.
 4. Update `CATALOG.md`.
 
