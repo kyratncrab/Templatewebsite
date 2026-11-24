@@ -1,15 +1,17 @@
 // Katalog template: pencarian kategori + animasi.
 // Vendor lokal (js/vendor/): GSAP untuk entrance hero, lottie-web untuk
 // petunjuk scroll. Scroll memakai satu loop rAF ala scrolltide (engine.md):
-// progress bar + statement kata-per-kata. Reveal section pakai
-// IntersectionObserver ala scrolltide (reveals.md).
+// progress bar + jalur tergambar (drawn.md). Reveal section pakai
+// IntersectionObserver ala scrolltide (reveals.md). Wordmark pas-lebar
+// ala scrolltide (type.md). Spotlight + tilt kartu bento (gestures).
 // Kalau GSAP/lottie gagal dimuat, semua konten tetap terlihat.
 (function () {
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
   // --- Pencarian kategori ---
   var input = document.getElementById("cari");
-  var cards = Array.prototype.slice.call(document.querySelectorAll("#grid-kategori .card"));
+  var cards = Array.prototype.slice.call(document.querySelectorAll("#grid-kategori .tile"));
   var empty = document.getElementById("tidak-ada");
   if (input) {
     input.addEventListener("input", function () {
@@ -50,17 +52,88 @@
     });
   }
 
+  // --- Spotlight + tilt kartu bento ---
+  var tiles = Array.prototype.slice.call(document.querySelectorAll(".tile"));
+  tiles.forEach(function (tile) {
+    tile.addEventListener("pointermove", function (e) {
+      var r = tile.getBoundingClientRect();
+      tile.style.setProperty("--mx", ((e.clientX - r.left) / r.width * 100) + "%");
+      tile.style.setProperty("--my", ((e.clientY - r.top) / r.height * 100) + "%");
+      if (fine && !reduced) {
+        var rx = ((e.clientY - r.top) / r.height - 0.5) * -6;
+        var ry = ((e.clientX - r.left) / r.width - 0.5) * 6;
+        tile.style.transform = "perspective(900px) rotateX(" + rx.toFixed(2) + "deg) rotateY(" + ry.toFixed(2) + "deg)";
+      }
+    });
+    tile.addEventListener("pointerleave", function () { tile.style.transform = ""; });
+  });
+
+  // --- Wordmark pas-lebar (scrolltide type.md) ---
+  var wordmark = document.getElementById("wordmark");
+  function fitWordmark() {
+    if (!wordmark) return;
+    var parent = wordmark.parentElement;
+    var PROBE = 100;
+    wordmark.style.fontSize = PROBE + "px";
+    var cs = getComputedStyle(parent);
+    var available = parent.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    var natural = wordmark.offsetWidth;
+    if (natural > 0) wordmark.style.fontSize = ((PROBE * available) / natural) + "px";
+  }
+  if (wordmark) {
+    fitWordmark();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitWordmark);
+    if ("ResizeObserver" in window) new ResizeObserver(fitWordmark).observe(wordmark.parentElement);
+  }
+
   // --- Satu loop scroll (scrolltide engine.md) ---
-  var progress = document.getElementById("progress");
-  var stmt = document.getElementById("pernyataan");
-  var words = document.querySelectorAll("#statement-text span");
-  var lastP = -1, lastScroll = -1;
   function clamp(v, min, max) { return Math.min(max, Math.max(min, v)); }
   function pinProgress(el) {
     var rect = el.getBoundingClientRect();
     var vh = window.innerHeight;
     return clamp(-rect.top / Math.max(1, rect.height - vh));
   }
+
+  // Jalur tergambar (scrolltide drawn.md)
+  var route = document.getElementById("cara-kerja");
+  var legs = Array.prototype.slice.call(document.querySelectorAll("#cara-kerja .leg"));
+  var master = document.getElementById("route-master");
+  var rider = document.getElementById("route-rider");
+  var routeTitle = document.getElementById("route-step-title");
+  var routeBody = document.getElementById("route-step-body");
+  var routeStep = document.getElementById("route-step");
+  var ROUTE_STEPS = [
+    { title: "Pilih kategori", body: "Cari gaya yang paling mirip dengan tokomu: kafe, warung, butik, atau yang lain." },
+    { title: "Sesuaikan datanya", body: "Nama, menu atau produk, jam buka, dan foto diisi dengan data tokomu sendiri." },
+    { title: "Website siap dipakai", body: "Satu halaman rapi untuk tokomu, langsung bisa dibuka dan dibagikan." }
+  ];
+  var ROUTE_WIN = [0.06, 0.94];
+  var lastRouteP = -1, lastStepIdx = -1, masterLen = 0;
+  function driveRoute() {
+    if (!route || !legs.length) return;
+    var p = pinProgress(route);
+    if (p === lastRouteP) return;
+    lastRouteP = p;
+    var q = clamp((p - ROUTE_WIN[0]) / (ROUTE_WIN[1] - ROUTE_WIN[0]));
+    legs.forEach(function (leg, i) {
+      leg.style.strokeDashoffset = String(1 - clamp(q * 3 - i));
+    });
+    if (master && rider) {
+      if (!masterLen) masterLen = master.getTotalLength();
+      var pt = master.getPointAtLength(q * masterLen);
+      rider.setAttribute("transform", "translate(" + pt.x + " " + pt.y + ")");
+    }
+    var idx = q < 1 / 3 ? 0 : q < 2 / 3 ? 1 : 2;
+    if (idx !== lastStepIdx) {
+      lastStepIdx = idx;
+      routeTitle.textContent = ROUTE_STEPS[idx].title;
+      routeBody.textContent = ROUTE_STEPS[idx].body;
+      routeStep.textContent = "Langkah " + (idx + 1) + " dari 3";
+    }
+  }
+
+  var progress = document.getElementById("progress");
+  var lastScroll = -1;
   function drive() {
     var y = window.scrollY || 0;
     if (y !== lastScroll) {
@@ -70,26 +143,11 @@
         progress.style.transform = "scaleX(" + (max > 0 ? y / max : 0) + ")";
       }
     }
-    if (stmt && words.length) {
-      var p = pinProgress(stmt);
-      if (p !== lastP) {
-        lastP = p;
-        var lit = Math.floor(p * words.length);
-        words.forEach(function (w, i) {
-          w.classList.toggle("on", reduced || i < lit);
-          w.classList.toggle("hot", reduced || (i === words.length - 1 && i < lit));
-        });
-      }
-    }
+    driveRoute();
   }
   if (!reduced) {
     var loop = function () { drive(); requestAnimationFrame(loop); };
     requestAnimationFrame(loop);
-  } else {
-    words.forEach(function (w, i) {
-      w.classList.add("on");
-      if (i === words.length - 1) w.classList.add("hot");
-    });
   }
 
   // --- Entrance hero (GSAP lokal; choreograph + motion Premium) ---

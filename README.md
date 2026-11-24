@@ -3,22 +3,25 @@
 Website katalog: tempat memilih gaya (kategori) template website toko.
 Pengunjung memilih kategori dan melihat gayanya. Contoh template tiap kategori segera hadir.
 
-## Desain (tema Kiln gelap + 3D, kombinasi tools)
+## Desain (tema Spore gelap + 3D, rombak modern)
 
-- Tema Hallmark Kiln (ember): latar near-black hangat `#141110`, teks krem
-  `#f3ede2`, satu sinyal ember `#d97b3f`. Palet diverifikasi Leonardo
-  (tinta 16.13:1, muted 8.00:1, ember 6.14:1). Aturan lengkap di `DESIGN.md`.
-- Hero: canvas three.js lokal (`js/vendor/three.module.min.js`, three@0.187.0)
-  — kristal melayang, cincin orbit, satelit, dan partikel yang mengikuti arah
-  kursor; klik memberi efek denyut. Tanpa WebGL, hero tetap tampil.
+- Tema Hallmark Spore (cellar): latar hitam kopi `#0f0a06`, tinta perkamen
+  `#efe7d8`, satu sinyal pink oyster `#e89f92`. Palet diverifikasi Leonardo
+  (tinta 16.03:1, muted 6.53:1, pink 9.20:1). Aturan lengkap di `DESIGN.md`.
+- Hero stage menempel (sticky): canvas three.js lokal (`js/vendor/three.module.min.js`,
+  three@0.187.0) — kristal melayang, cincin orbit, 14 satelit, dan partikel
+  yang mengikuti arah kursor; klik meledak jadi partikel; kamera bergeser
+  mengikuti kursor. Tanpa WebGL, hero tetap tampil.
+- Kategori dalam grid bento 4 kolom (Kafe 2x2, Oleh-Oleh/Jasa/Kelontong lebar),
+  kartu foto penuh dengan scrim, spotlight + tilt mengikuti kursor.
+- Scroll: satu loop rAF ala scrolltide — progress bar + jalur "Cara kerja"
+  yang tergambar sendiri (3 kaki + rider). Marquee outline. Penutup wordmark
+  "Template Website" pas-lebar (fitText).
 - Animasi: GSAP lokal (`js/vendor/gsap.min.js`) untuk entrance hero;
-  lottie-web lokal (`js/vendor/lottie.min.js`) untuk petunjuk scroll;
-  scroll memakai satu loop rAF ala scrolltide (progress bar + statement
-  kata-per-kata) dan reveal `data-reveal`. Kalau vendor gagal dimuat, semua
-  konten tetap terlihat.
-- Hormati `prefers-reduced-motion`: animasi dan loop 3D dimatikan.
-- Lolos sloplint Hallmark: 0 FAIL, 2 REFLEX yang di-waive tercatat di
-  `css/style.css`.
+  lottie-web lokal (`js/vendor/lottie.min.js`) untuk petunjuk scroll.
+  Kalau vendor gagal dimuat, semua konten tetap terlihat.
+- Hormati `prefers-reduced-motion`: animasi dan loop 3D dimatikan; jalur
+  tergambar diganti daftar langkah statis.
 
 - **Live (GitHub Pages):** https://kyratncrab.github.io/Templatewebsite/
 

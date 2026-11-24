@@ -1,5 +1,5 @@
 // Hero 3D homepage: kristal melayang + cincin orbit + partikel,
-// mengikuti arah kursor (three.js lokal di js/vendor/, bukan CDN).
+// mengikuti arah kursor, klik meledak (three.js lokal di js/vendor/).
 // Tanpa WebGL, hero tetap tampil: canvas transparan,
 // teks terbaca lewat .hero-shade.
 import * as THREE from 'three';
@@ -24,22 +24,22 @@ import * as THREE from 'three';
   var key = new THREE.DirectionalLight(0xffffff, 1.4);
   key.position.set(4, 6, 6);
   scene.add(key);
-  var gold = new THREE.PointLight(0xd97b3f, 30, 30, 2);
+  var gold = new THREE.PointLight(0xe89f92, 30, 30, 2);
   gold.position.set(-4, -2, 3);
   scene.add(gold);
 
   var world = new THREE.Group();
   scene.add(world);
 
-  // Kristal utama + wireframe ember
+  // Kristal utama + wireframe pink
   var crystal = new THREE.Mesh(
     new THREE.IcosahedronGeometry(1.55, 0),
-    new THREE.MeshStandardMaterial({ color: 0xe8e2d6, metalness: 0.85, roughness: 0.18, flatShading: true })
+    new THREE.MeshStandardMaterial({ color: 0xefe7d8, metalness: 0.85, roughness: 0.18, flatShading: true })
   );
   world.add(crystal);
   var wire = new THREE.Mesh(
     new THREE.IcosahedronGeometry(1.62, 0),
-    new THREE.MeshBasicMaterial({ color: 0xd97b3f, wireframe: true, transparent: true, opacity: 0.28 })
+    new THREE.MeshBasicMaterial({ color: 0xe89f92, wireframe: true, transparent: true, opacity: 0.28 })
   );
   world.add(wire);
 
@@ -48,7 +48,7 @@ import * as THREE from 'three';
   [[2.6, 0.5, 0.35], [3.15, -0.4, 1.1]].forEach(function (cfg, i) {
     var ring = new THREE.Mesh(
       new THREE.TorusGeometry(cfg[0], 0.012, 8, 128),
-      new THREE.MeshBasicMaterial({ color: 0xd97b3f, transparent: true, opacity: i === 0 ? 0.5 : 0.32 })
+      new THREE.MeshBasicMaterial({ color: 0xe89f92, transparent: true, opacity: i === 0 ? 0.5 : 0.32 })
     );
     ring.rotation.set(cfg[1], cfg[2], 0);
     ring.userData.spin = i === 0 ? 0.0016 : -0.0011;
@@ -58,10 +58,10 @@ import * as THREE from 'three';
 
   // Satelit kecil yang mengorbit
   var sats = [];
-  for (var s = 0; s < 10; s++) {
+  for (var s = 0; s < 14; s++) {
     var sat = new THREE.Mesh(
       new THREE.OctahedronGeometry(0.09 + Math.random() * 0.07, 0),
-      new THREE.MeshStandardMaterial({ color: 0x8a8073, metalness: 0.7, roughness: 0.3, flatShading: true })
+      new THREE.MeshStandardMaterial({ color: 0x9d9388, metalness: 0.7, roughness: 0.3, flatShading: true })
     );
     sat.userData = {
       r: 2.5 + Math.random() * 1.0,
@@ -73,7 +73,7 @@ import * as THREE from 'three';
     sats.push(sat);
   }
 
-  // Partikel debu emas
+  // Partikel debu pink
   var pCount = 320;
   var pos = new Float32Array(pCount * 3);
   for (var i = 0; i < pCount; i++) {
@@ -87,9 +87,22 @@ import * as THREE from 'three';
   var pGeo = new THREE.BufferGeometry();
   pGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
   var particles = new THREE.Points(pGeo, new THREE.PointsMaterial({
-    color: 0xd97b3f, size: 0.03, transparent: true, opacity: 0.45, sizeAttenuation: true
+    color: 0xe89f92, size: 0.03, transparent: true, opacity: 0.45, sizeAttenuation: true
   }));
   scene.add(particles);
+
+  // Ledakan klik: awan partikel yang mekar dari kristal lalu hilang
+  var BURST_N = 140;
+  var bPos = new Float32Array(BURST_N * 3);
+  var bVel = new Float32Array(BURST_N * 3);
+  var burstT = 1;
+  var bGeo = new THREE.BufferGeometry();
+  bGeo.setAttribute('position', new THREE.BufferAttribute(bPos, 3));
+  var burst = new THREE.Points(bGeo, new THREE.PointsMaterial({
+    color: 0xe89f92, size: 0.06, transparent: true, opacity: 0, sizeAttenuation: true
+  }));
+  burst.visible = false;
+  scene.add(burst);
 
   // Kursor -> target rotasi
   var targetRX = 0, targetRY = 0, mx = 0, my = 0;
@@ -102,9 +115,25 @@ import * as THREE from 'three';
   });
   hero.addEventListener('pointerleave', function () { targetRX = 0; targetRY = 0; });
 
-  // Klik -> denyut
+  // Klik -> denyut + ledakan partikel dari posisi kristal
   var pulse = 0;
-  hero.addEventListener('pointerdown', function () { pulse = 1; });
+  hero.addEventListener('pointerdown', function () {
+    pulse = 1;
+    var wp = new THREE.Vector3();
+    crystal.getWorldPosition(wp);
+    for (var i = 0; i < BURST_N; i++) {
+      bPos[i * 3] = wp.x; bPos[i * 3 + 1] = wp.y; bPos[i * 3 + 2] = wp.z;
+      var th = Math.random() * Math.PI * 2;
+      var ph = Math.acos(2 * Math.random() - 1);
+      var sp = 1.2 + Math.random() * 2.2;
+      bVel[i * 3] = Math.sin(ph) * Math.cos(th) * sp;
+      bVel[i * 3 + 1] = Math.sin(ph) * Math.sin(th) * sp;
+      bVel[i * 3 + 2] = Math.cos(ph) * sp;
+    }
+    bGeo.attributes.position.needsUpdate = true;
+    burst.visible = true;
+    burstT = 0;
+  });
 
   function resize() {
     var w = hero.clientWidth, h = hero.clientHeight;
@@ -142,6 +171,21 @@ import * as THREE from 'three';
       sat.rotation.y += 0.012;
     });
     particles.rotation.y += 0.0004;
+    camera.position.x += (mx * 0.35 - camera.position.x) * 0.03;
+    camera.position.y += (-my * 0.2 - camera.position.y) * 0.03;
+    camera.lookAt(0, 0, 0);
+    if (burstT < 1) {
+      burstT = Math.min(1, burstT + 0.016);
+      for (var bi = 0; bi < BURST_N; bi++) {
+        bPos[bi * 3] += bVel[bi * 3] * 0.016;
+        bPos[bi * 3 + 1] += bVel[bi * 3 + 1] * 0.016;
+        bPos[bi * 3 + 2] += bVel[bi * 3 + 2] * 0.016;
+        bVel[bi * 3] *= 0.97; bVel[bi * 3 + 1] *= 0.97; bVel[bi * 3 + 2] *= 0.97;
+      }
+      bGeo.attributes.position.needsUpdate = true;
+      burst.material.opacity = 0.9 * (1 - burstT);
+      if (burstT >= 1) burst.visible = false;
+    }
     world.rotation.y += (targetRY - world.rotation.y) * 0.12;
     world.rotation.x += (targetRX - world.rotation.x) * 0.12;
     world.position.y = Math.sin(t * 0.8) * 0.12;
