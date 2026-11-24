@@ -3,7 +3,7 @@
 Website katalog Ragam Web: tempat memilih gaya (kategori) template website toko.
 Pengunjung memilih kategori, melihat contoh website jadi, lalu pesan lewat WhatsApp.
 
-- **Live (GitHub Pages):** https://kyratncrab.github.io/template-website/
+- **Live (GitHub Pages):** https://kyratncrab.github.io/Templatewebsite/
 - **Harga:** Rp50.000 / 2 bulan, termasuk hosting + domain. Pengerjaan 1–2 hari.
 - **Kontak WhatsApp:** 0877-1346-6986
 
