@@ -3,15 +3,22 @@
 Website katalog: tempat memilih gaya (kategori) template website toko.
 Pengunjung memilih kategori dan melihat gayanya. Contoh template tiap kategori segera hadir.
 
-## Desain (tema gelap + 3D)
+## Desain (tema Kiln gelap + 3D, kombinasi tools)
 
-- Tema gelap modern, tanpa warna cerah: latar `#0a0a0d`, teks gading, satu aksen emas redup `#c9a25e`.
-- Hero: canvas three.js (`js/hero3d.js`, three@0.187.0 via CDN importmap) — kristal melayang, cincin orbit,
-  satelit, dan partikel yang mengikuti arah kursor; klik memberi efek denyut. Tanpa WebGL, hero tetap
-  tampil (teks terbaca, animasi dilewati).
-- Animasi: GSAP 3.12.5 + ScrollTrigger via CDN (`js/app.js`) — hero masuk sekali saat load, kartu dan
-  langkah muncul saat di-scroll. Kalau CDN gagal, semua konten tetap terlihat.
+- Tema Hallmark Kiln (ember): latar near-black hangat `#141110`, teks krem
+  `#f3ede2`, satu sinyal ember `#d97b3f`. Palet diverifikasi Leonardo
+  (tinta 16.13:1, muted 8.00:1, ember 6.14:1). Aturan lengkap di `DESIGN.md`.
+- Hero: canvas three.js lokal (`js/vendor/three.module.min.js`, three@0.187.0)
+  — kristal melayang, cincin orbit, satelit, dan partikel yang mengikuti arah
+  kursor; klik memberi efek denyut. Tanpa WebGL, hero tetap tampil.
+- Animasi: GSAP lokal (`js/vendor/gsap.min.js`) untuk entrance hero;
+  lottie-web lokal (`js/vendor/lottie.min.js`) untuk petunjuk scroll;
+  scroll memakai satu loop rAF ala scrolltide (progress bar + statement
+  kata-per-kata) dan reveal `data-reveal`. Kalau vendor gagal dimuat, semua
+  konten tetap terlihat.
 - Hormati `prefers-reduced-motion`: animasi dan loop 3D dimatikan.
+- Lolos sloplint Hallmark: 0 FAIL, 2 REFLEX yang di-waive tercatat di
+  `css/style.css`.
 
 - **Live (GitHub Pages):** https://kyratncrab.github.io/Templatewebsite/
 
@@ -24,7 +31,11 @@ template-website/
 ├── data/catalog.json    # daftar kategori + contoh (untuk dibaca mesin/agent)
 ├── index.html           # halaman katalog
 ├── css/style.css        # gaya halaman katalog
-├── js/app.js            # pencarian kategori
+├── js/app.js            # pencarian kategori + animasi
+├── js/vendor/           # three.js, GSAP, lottie-web (lokal, bukan CDN)
+├── js/hero3d.js         # adegan 3D hero
+├── assets/lottie/       # animasi petunjuk scroll (Lottie JSON)
+├── DESIGN.md            # aturan desain (dari koreksi Iky + kombinasi tools)
 ├── assets/icons/        # ikon Lucide (SVG) yang dipakai katalog
 └── templates/           # draf contoh template per kategori (belum ditautkan dari homepage)
     └── <slug-kategori>/ # misal: kafe-resto/

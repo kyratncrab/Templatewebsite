@@ -1,116 +1,159 @@
-/* Katalog template website toko — tema gelap modern + 3D.
-   Gelap, tanpa warna cerah: hitam lembut, teks gading, satu aksen emas redup.
-   Hero: canvas three.js (js/hero3d.js). Animasi: GSAP (js/app.js). */
+/* Hallmark stamp: kiln (ember) — deal dark-modern-catalog-templates-8a9d · theme kiln 1/3 · genre atmospheric */
+/* Critique: tema gelap Kiln (near-black hangat, tinta krem, satu sinyal ember). Palet diverifikasi Leonardo: tinta 16.13:1, muted 8.00:1, ember 6.14:1, teks di atas ember 6.01:1. */
+/* Waivers: 26b (tidak ada kontrol disabled di halaman ini), 38iii (kata ember adalah signature tema Kiln, muncul sekali di hero). */
+/* Katalog template website toko — Kiln + scrolltide + motion Premium. Vendor lokal: three.js, GSAP, lottie-web (js/vendor/). */
 :root{
-  --bg:#0a0a0d; --surface:#101016; --card:#15151c; --ink:#f2f1ec;
-  --muted:#a1a1ab; --accent:#c9a25e; --accent-ink:#171204; --accent-soft:rgba(201,162,94,.12);
-  --line:rgba(255,255,255,.08); --r:16px; --r-lg:20px; --wrap:1200px;
+  --color-paper:#141110; --color-paper-2:#1c1815; --color-paper-3:#241f1b;
+  --color-ink:#f3ede2; --color-ink-2:#e6ded0; --color-muted:#b3a893;
+  --color-rule:rgba(243,237,226,.12);
+  --color-accent:#d97b3f; --color-accent-ink:#1d1206; --color-focus:#e8a05c;
+  --color-accent-soft:rgba(217,123,63,.14); --color-accent-line:rgba(217,123,63,.6);
+  --color-shade-strong:rgba(20,17,16,.9); --color-shade-mid:rgba(20,17,16,.5);
+  --color-shade-60:rgba(20,17,16,.6); --color-shade-soft:rgba(20,17,16,.3);
+  --color-placeholder:#8a8073;
+  --font-display:"Fraunces",Georgia,serif; --font-body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --radius-card:28px; --radius-well:16px; --radius-pill:999px;
+  --dur-quick:150ms; --dur-standard:350ms; --dur-slow:600ms;
+  --ease-premium:cubic-bezier(0.4,0,0.2,1);
+  --wrap:1200px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:"Albert Sans",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{font-family:var(--font-body);color:var(--color-ink);background:var(--color-paper);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip;-webkit-tap-highlight-color:transparent}
 img{display:block;max-width:100%}
 a{color:inherit}
+::selection{background:var(--color-accent);color:var(--color-accent-ink)}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-thumb{background:var(--color-paper-3);border-radius:5px}
+::-webkit-scrollbar-track{background:var(--color-paper)}
+:focus-visible{outline:2px solid var(--color-focus);outline-offset:3px;border-radius:4px}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:16px;top:-48px;z-index:30;background:var(--color-accent);color:var(--color-accent-ink);padding:12px 20px;border-radius:var(--radius-pill);font-weight:600;text-decoration:none;transition:top var(--dur-quick) ease}
+.skip:focus{top:12px}
+.progress{position:fixed;top:0;left:0;right:0;height:2px;background:var(--color-accent);transform:scaleX(0);transform-origin:left;z-index:20}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
 
-/* header kaca gelap */
-header.site{position:sticky;top:0;z-index:10;background:rgba(10,10,13,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+/* header */
+header.site{position:sticky;top:0;z-index:10;background:var(--color-paper-2);border-bottom:1px solid var(--color-rule);padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
 header.site .wrap{display:flex;align-items:center;gap:32px;height:64px}
-.logo{font-weight:700;font-size:19px;letter-spacing:-.02em;text-decoration:none}
-.logo::after{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-left:6px;vertical-align:middle}
+.logo{font-family:var(--font-display);font-weight:500;font-size:20px;letter-spacing:-.02em;text-decoration:none}
+.logo span{color:var(--color-accent)}
 nav.main{display:flex;gap:24px;margin-left:auto}
-nav.main a{text-decoration:none;font-size:15px;font-weight:500;color:var(--muted)}
-nav.main a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+nav.main a{text-decoration:none;font-size:15px;font-weight:500;color:var(--color-muted)}
+@media (hover:hover) and (pointer:fine){
+  nav.main a:hover{color:var(--color-ink);text-decoration:underline;text-underline-offset:4px}
+}
 
-/* tombol: satu gaya, emas redup */
-.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:13px 24px;font-weight:700;font-size:15px;text-decoration:none;border:0;cursor:pointer;transition:transform .15s ease,filter .15s ease}
-.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
-.btn:active{transform:translateY(0) scale(.98)}
+/* tombol: satu gaya, pil ember 50px */
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--color-accent);color:var(--color-accent-ink);border-radius:var(--radius-pill);padding:0 28px;height:50px;font-weight:600;font-size:15px;text-decoration:none;border:0;cursor:pointer;touch-action:manipulation;transition:transform var(--dur-quick) ease,background-color var(--dur-quick) ease}
 .btn .ic{width:18px;height:18px}
+@media (hover:hover) and (pointer:fine){
+  .btn:hover{transform:translateY(-1px);background-color:var(--color-focus)}
+}
+.btn:active{transform:translateY(0) scale(.98)}
 
 /* hero: canvas 3D di belakang, teks di depan */
-.hero{position:relative;overflow:hidden;padding:64px 0 80px;min-height:calc(100vh - 64px);display:flex;align-items:center}
-#hero3d{position:absolute;inset:0;width:100%;height:100%;display:block}
-.hero-shade{position:absolute;inset:0;background:radial-gradient(60% 80% at 18% 50%,rgba(10,10,13,.88) 0%,rgba(10,10,13,.45) 55%,rgba(10,10,13,0) 100%);pointer-events:none}
+.hero{position:relative;overflow:hidden;padding:40px 0 56px;min-height:calc(100svh - 64px);display:flex;align-items:center}
+#hero3d{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y}
+.hero-shade{position:absolute;inset:0;background:radial-gradient(60% 80% at 18% 50%,var(--color-shade-strong) 0%,var(--color-shade-mid) 55%,rgba(20,17,16,0) 100%);pointer-events:none}
 .hero-grid{position:relative;z-index:1;width:100%}
-.hero-text{max-width:640px}
-.hero-text .notice{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
-.hero-text h1{font-size:clamp(44px,6.2vw,76px);line-height:1.02;letter-spacing:-.035em;font-weight:600}
+.hero-text{max-width:640px;min-width:0}
+.hero-text h1{font-family:var(--font-display);font-weight:500;font-size:clamp(46px,6.2vw,78px);line-height:1.04;letter-spacing:-.02em;text-wrap:balance;overflow-wrap:break-word}
 .hero-text h1 .line{display:block}
-.hero-text h1 em{font-style:normal;color:var(--accent)}
-.hero-text .lead{font-size:20px;line-height:1.55;color:var(--muted);max-width:46ch;margin:24px 0 32px}
+.hero-text h1 em{font-style:normal;color:var(--color-accent)}
+.hero-text .lead{font-size:19px;line-height:1.55;color:var(--color-muted);max-width:46ch;margin:24px 0 32px}
 .search{margin-bottom:28px}
-.search .box{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:0 18px;height:54px;max-width:520px;transition:border-color .15s ease}
-.search .box:focus-within{border-color:var(--accent)}
-.search .box img{width:20px;height:20px;opacity:.55;flex:none;filter:brightness(0) invert(1)}
-.search input{border:0;outline:0;background:transparent;font:inherit;font-size:16px;width:100%;color:var(--ink)}
-.search input::placeholder{color:#7a7a85}
-.hint{font-size:13px;color:#71717a;margin-top:20px}
-/* hero masuk sekali saat load (GSAP menggerakkan [data-enter], CSS ini cadangan saat JS mati: semua tetap terlihat) */
+.search .box{display:flex;align-items:center;gap:8px;background:var(--color-paper-2);border:1px solid var(--color-rule);border-radius:var(--radius-well);padding:0 20px;height:54px;max-width:520px;transition:border-color var(--dur-quick) ease}
+.search .box:focus-within{border-color:var(--color-accent)}
+.search .box img{width:20px;height:20px;opacity:.6;flex:none;filter:brightness(0) invert(1)}
+.search input{border:0;outline:0;background:transparent;font:inherit;font-size:16px;width:100%;color:var(--color-ink);caret-color:var(--color-accent)}
+.search input::placeholder{color:var(--color-placeholder)}
+.hint{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--color-muted);margin-top:28px}
+.hint .cue{width:40px;height:40px;flex:none}
+.hint .cue svg{width:100%;height:100%}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .marquee .track{animation:none}
 }
 
 /* marquee kategori */
-.marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0}
-.marquee .track{display:flex;gap:28px;width:max-content;animation:marquee 32s linear infinite;white-space:nowrap}
-.marquee span{font-size:15px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.marquee i{color:var(--accent);font-style:normal;font-size:10px;align-self:center}
+.marquee{overflow:hidden;border-top:1px solid var(--color-rule);border-bottom:1px solid var(--color-rule);padding:16px 0}
+.marquee .track{display:flex;gap:32px;width:max-content;animation:marquee 32s linear infinite;white-space:nowrap}
+.marquee span{font-size:15px;font-weight:500;color:var(--color-muted)}
 .marquee:hover .track{animation-play-state:paused}
 @keyframes marquee{to{transform:translateX(-50%)}}
 
 /* blok */
-.block{padding:88px 0}
-.block h2{font-size:clamp(32px,4vw,44px);line-height:1.08;letter-spacing:-.02em;font-weight:600}
-.sub{font-size:17px;color:var(--muted);margin:14px 0 44px;max-width:60ch}
+.block{padding:88px 0;scroll-margin-top:80px}
+.block h2{font-family:var(--font-display);font-weight:500;font-size:clamp(34px,4vw,46px);line-height:1.08;letter-spacing:-.02em;text-wrap:balance}
+.sub{font-size:17px;color:var(--color-muted);margin:16px 0 44px;max-width:60ch}
+
+/* reveal ala scrolltide: hanya disembunyikan kalau JS jalan */
+.js [data-reveal]{opacity:0;transform:translate3d(0,24px,0);transition:opacity .8s cubic-bezier(0.16,1,0.3,1),transform .8s cubic-bezier(0.16,1,0.3,1);transition-delay:calc(var(--i,0)*70ms)}
+.js [data-reveal].is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .js [data-reveal]{opacity:1;transform:none;transition:none}
+}
 
 /* kartu kategori */
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
-.card:hover{transform:translateY(-4px);border-color:rgba(201,162,94,.55);box-shadow:0 16px 40px rgba(0,0,0,.45)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.card{background:var(--color-paper-2);color:var(--color-ink);border:1px solid var(--color-rule);border-radius:var(--radius-card);overflow:hidden;touch-action:manipulation;transition:transform var(--dur-standard) var(--ease-premium),border-color var(--dur-standard) var(--ease-premium)}
 .card .media{overflow:hidden;aspect-ratio:4/3}
-.card .media img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;filter:saturate(.92)}
-.card:hover .media img{transform:scale(1.04)}
-.card .body{padding:20px 22px 24px}
+.card .media img{width:100%;height:100%;object-fit:cover;filter:saturate(.92)}
+.card .body{padding:20px 24px}
 .card h3{font-size:20px;font-weight:600;letter-spacing:-.01em}
-.card p{font-size:16px;color:var(--muted);margin-top:6px}
-.empty{display:none;margin-top:32px;font-size:17px;color:var(--muted)}
+.card p{font-size:16px;color:var(--color-muted);margin-top:8px}
+@media (hover:hover) and (pointer:fine){
+  .card:hover{transform:translateY(-4px);border-color:var(--color-accent-line)}
+}
+.empty{display:none;margin-top:32px;font-size:17px;color:var(--color-muted)}
 .empty.show{display:block}
 
 /* cara kerja */
-#cara-kerja{background:var(--surface)}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.step{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px;transition:transform .25s ease,border-color .25s ease}
-.step:hover{transform:translateY(-4px);border-color:rgba(201,162,94,.55)}
-.step-ic{width:48px;height:48px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+#cara-kerja{background:var(--color-paper-2)}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;list-style:none}
+.step{background:var(--color-paper);color:var(--color-ink);border:1px solid var(--color-rule);border-radius:var(--radius-card);padding:28px;transition:transform var(--dur-standard) var(--ease-premium),border-color var(--dur-standard) var(--ease-premium)}
+@media (hover:hover) and (pointer:fine){
+  .step:hover{transform:translateY(-4px);border-color:var(--color-accent-line)}
+}
+.step-ic{width:48px;height:48px;border-radius:50%;background:var(--color-accent-soft);color:var(--color-accent);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
 .step-ic img{width:22px;height:22px}
 .step h3{font-size:19px;font-weight:600;margin-bottom:8px}
-.step p{font-size:16px;color:var(--muted)}
+.step p{font-size:16px;color:var(--color-muted)}
 
-/* momen tipe */
-.statement{padding:110px 0}
-.statement p{font-size:clamp(34px,5vw,60px);line-height:1.06;letter-spacing:-.03em;font-weight:600;max-width:20ch;background:linear-gradient(100deg,var(--ink) 55%,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+/* momen tipe: satu stage scroll, kata menyala satu per satu */
+.statement{height:220svh;scroll-margin-top:0}
+.statement-pin{position:sticky;top:64px;height:calc(100svh - 64px);display:flex;align-items:center}
+.statement-pin p{font-family:var(--font-display);font-weight:500;font-size:clamp(38px,6vw,68px);line-height:1.05;letter-spacing:-.02em;max-width:45ch;text-wrap:balance}
+.statement-pin span{color:var(--color-muted);opacity:.3;transition:opacity .3s ease,color .3s ease}
+.statement-pin span.on{color:var(--color-ink);opacity:1}
+.statement-pin span.on.hot{color:var(--color-accent)}
+@media (prefers-reduced-motion:reduce){
+  .statement{height:auto}
+  .statement-pin{position:static;height:auto;padding:96px 0}
+  .statement-pin span{opacity:1;color:var(--color-ink)}
+  .statement-pin span.hot{color:var(--color-accent)}
+}
 
 /* footer */
-footer.site{border-top:1px solid var(--line);padding:36px 0 44px;font-size:14px;color:var(--muted)}
+footer.site{border-top:1px solid var(--color-rule);padding:36px 0 44px;font-size:14px;color:var(--color-muted);padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
 footer.site .wrap{display:flex;flex-direction:column;gap:8px}
-footer.site b{color:var(--ink)}
+footer.site b{color:var(--color-ink)}
 
 /* responsif */
 @media (max-width:1024px){
-  .grid{grid-template-columns:repeat(2,1fr)}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:820px){
   .hero{padding:48px 0 64px;min-height:0}
-  .hero-shade{background:linear-gradient(180deg,rgba(10,10,13,.82),rgba(10,10,13,.55) 60%,rgba(10,10,13,.25))}
+  .hero-shade{background:linear-gradient(180deg,var(--color-shade-strong),var(--color-shade-60) 60%,var(--color-shade-soft))}
   .hero-text .lead{font-size:18px}
-  .steps{grid-template-columns:1fr}
+  .steps{grid-template-columns:minmax(0,1fr)}
   .block{padding:64px 0}
 }
 @media (max-width:390px){
-  .grid{grid-template-columns:1fr}
+  .grid{grid-template-columns:minmax(0,1fr)}
   .btn{width:100%;justify-content:center}
   .search .box{height:50px}
-  .statement{padding:72px 0}
+  .statement{height:200svh}
 }

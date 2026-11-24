@@ -1,6 +1,6 @@
 // Hero 3D homepage: kristal melayang + cincin orbit + partikel,
-// mengikuti arah kursor (three.js via CDN importmap).
-// Tanpa WebGL atau tanpa CDN, hero tetap tampil: canvas transparan,
+// mengikuti arah kursor (three.js lokal di js/vendor/, bukan CDN).
+// Tanpa WebGL, hero tetap tampil: canvas transparan,
 // teks terbaca lewat .hero-shade.
 import * as THREE from 'three';
 
@@ -24,22 +24,22 @@ import * as THREE from 'three';
   var key = new THREE.DirectionalLight(0xffffff, 1.4);
   key.position.set(4, 6, 6);
   scene.add(key);
-  var gold = new THREE.PointLight(0xc9a25e, 30, 30, 2);
+  var gold = new THREE.PointLight(0xd97b3f, 30, 30, 2);
   gold.position.set(-4, -2, 3);
   scene.add(gold);
 
   var world = new THREE.Group();
   scene.add(world);
 
-  // Kristal utama + wireframe emas redup
+  // Kristal utama + wireframe ember
   var crystal = new THREE.Mesh(
     new THREE.IcosahedronGeometry(1.55, 0),
-    new THREE.MeshStandardMaterial({ color: 0xdfe6ee, metalness: 0.85, roughness: 0.18, flatShading: true })
+    new THREE.MeshStandardMaterial({ color: 0xe8e2d6, metalness: 0.85, roughness: 0.18, flatShading: true })
   );
   world.add(crystal);
   var wire = new THREE.Mesh(
     new THREE.IcosahedronGeometry(1.62, 0),
-    new THREE.MeshBasicMaterial({ color: 0xc9a25e, wireframe: true, transparent: true, opacity: 0.28 })
+    new THREE.MeshBasicMaterial({ color: 0xd97b3f, wireframe: true, transparent: true, opacity: 0.28 })
   );
   world.add(wire);
 
@@ -48,7 +48,7 @@ import * as THREE from 'three';
   [[2.6, 0.5, 0.35], [3.15, -0.4, 1.1]].forEach(function (cfg, i) {
     var ring = new THREE.Mesh(
       new THREE.TorusGeometry(cfg[0], 0.012, 8, 128),
-      new THREE.MeshBasicMaterial({ color: 0xc9a25e, transparent: true, opacity: i === 0 ? 0.5 : 0.32 })
+      new THREE.MeshBasicMaterial({ color: 0xd97b3f, transparent: true, opacity: i === 0 ? 0.5 : 0.32 })
     );
     ring.rotation.set(cfg[1], cfg[2], 0);
     ring.userData.spin = i === 0 ? 0.0016 : -0.0011;
@@ -61,7 +61,7 @@ import * as THREE from 'three';
   for (var s = 0; s < 10; s++) {
     var sat = new THREE.Mesh(
       new THREE.OctahedronGeometry(0.09 + Math.random() * 0.07, 0),
-      new THREE.MeshStandardMaterial({ color: 0x8a93a6, metalness: 0.7, roughness: 0.3, flatShading: true })
+      new THREE.MeshStandardMaterial({ color: 0x8a8073, metalness: 0.7, roughness: 0.3, flatShading: true })
     );
     sat.userData = {
       r: 2.5 + Math.random() * 1.0,
@@ -87,7 +87,7 @@ import * as THREE from 'three';
   var pGeo = new THREE.BufferGeometry();
   pGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
   var particles = new THREE.Points(pGeo, new THREE.PointsMaterial({
-    color: 0xc9a25e, size: 0.03, transparent: true, opacity: 0.45, sizeAttenuation: true
+    color: 0xd97b3f, size: 0.03, transparent: true, opacity: 0.45, sizeAttenuation: true
   }));
   scene.add(particles);
 
@@ -124,9 +124,10 @@ import * as THREE from 'three';
 
   var clock = new THREE.Clock();
   var running = true;
+  var rafId = 0;
   function frame() {
-    if (!running) return;
-    requestAnimationFrame(frame);
+    if (!running) { rafId = 0; return; }
+    rafId = requestAnimationFrame(frame);
     var t = clock.getElapsedTime();
     crystal.rotation.y += 0.0035;
     crystal.rotation.x += 0.0012;
@@ -141,8 +142,8 @@ import * as THREE from 'three';
       sat.rotation.y += 0.012;
     });
     particles.rotation.y += 0.0004;
-    world.rotation.y += (targetRY - world.rotation.y) * 0.05;
-    world.rotation.x += (targetRX - world.rotation.x) * 0.05;
+    world.rotation.y += (targetRY - world.rotation.y) * 0.12;
+    world.rotation.x += (targetRX - world.rotation.x) * 0.12;
     world.position.y = Math.sin(t * 0.8) * 0.12;
     if (pulse > 0) {
       pulse = Math.max(0, pulse - 0.04);
@@ -160,18 +161,21 @@ import * as THREE from 'three';
     return;
   }
 
-  // Jeda saat hero tidak terlihat / tab disembunyikan
+  // Jeda saat hero tidak terlihat / tab disembunyikan.
+  // start() dijaga rafId supaya tidak pernah ada dua loop sekaligus.
+  function start() { if (rafId) return; running = true; frame(); }
+  function stop() { running = false; if (rafId) { cancelAnimationFrame(rafId); rafId = 0; } }
   var visible = true;
   if (typeof IntersectionObserver !== 'undefined') {
     new IntersectionObserver(function (entries) {
       visible = entries[0].isIntersecting;
-      if (visible && !document.hidden) { running = true; frame(); }
-      else { running = false; }
+      if (visible && !document.hidden) { start(); }
+      else { stop(); }
     }, { threshold: 0 }).observe(hero);
   }
   document.addEventListener('visibilitychange', function () {
-    if (document.hidden) { running = false; }
-    else if (visible) { running = true; frame(); }
+    if (document.hidden) { stop(); }
+    else if (visible) { start(); }
   });
-  frame();
+  start();
 })();

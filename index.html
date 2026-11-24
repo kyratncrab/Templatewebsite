@@ -2,24 +2,30 @@
 <html lang="id">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Katalog Template Website Toko</title>
-<meta name="description" content="Pilih gaya website untuk toko kamu: kafe, warung makan, butik, oleh-oleh, jasa, dan toko kelontong.">
-<meta name="theme-color" content="#0a0a0d">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Template Website: Website toko, tinggal pilih gayanya</title>
+<meta name="description" content="Katalog template website toko. Enam kategori, satu halaman, langsung jadi.">
+<meta name="theme-color" content="#141110">
+<script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://thumb.wikimedia.org">
+<link rel="preconnect" href="https://picsum.photos">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="icon" href="assets/icons/store.svg">
 <script type="importmap">
-{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.187.0/build/three.module.min.js"}}
+{ "imports": { "three": "./js/vendor/three.module.min.js" } }
 </script>
 </head>
 <body>
+<a class="skip" href="#kategori">Lewati ke kategori</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
 <header class="site">
   <div class="wrap">
-    <a class="logo" href="#">Template Website</a>
-    <nav class="main">
+    <a class="logo" href="#">Template <span>Website</span></a>
+    <nav class="main" aria-label="Navigasi utama">
       <a href="#kategori">Kategori</a>
       <a href="#cara-kerja">Cara Kerja</a>
     </nav>
@@ -30,68 +36,67 @@
   <section class="hero" id="hero">
     <canvas id="hero3d" aria-hidden="true"></canvas>
     <div class="hero-shade" aria-hidden="true"></div>
-    <div class="wrap hero-grid" data-enter>
+    <div class="wrap hero-grid">
       <div class="hero-text">
-        <p class="notice">Katalog template website toko — 6 kategori</p>
         <h1><span class="line">Website toko,</span> <span class="line">tinggal pilih</span> <span class="line"><em>gayanya.</em></span></h1>
-        <p class="lead">Enam kategori template siap pakai untuk toko: kafe, warung makan, butik, oleh-oleh, jasa, dan toko kelontong. Pilih kategorinya, lihat gayanya.</p>
+        <p class="lead">Enam kategori template siap pakai untuk tokomu.</p>
         <div class="search">
-          <label class="box" for="cari"><img src="assets/icons/search.svg" alt=""><input id="cari" type="search" placeholder="Cari kategori, misal: kafe, butik, laundry…" autocomplete="off"></label>
+          <label class="box" for="cari"><img src="assets/icons/search.svg" alt="" aria-hidden="true"><input id="cari" name="cari" type="search" placeholder="Cari kategori, misal: kafe, butik, laundry…" autocomplete="off" spellcheck="false" aria-label="Cari kategori"></label>
         </div>
-        <a class="btn" href="#kategori">Lihat kategori <img class="ic" src="assets/icons/arrow-right.svg" alt=""></a>
-        <p class="hint">Gerakkan kursor — kristalnya mengikuti. Klik untuk efek.</p>
+        <a class="btn" href="#kategori">Lihat kategori <img class="ic" src="assets/icons/arrow-right.svg" alt="" aria-hidden="true"></a>
+        <p class="hint"><span class="cue" id="scroll-cue" aria-hidden="true"></span><span>Gerakkan kursor, kristalnya mengikuti. Klik untuk efek. Scroll ke bawah.</span></p>
       </div>
     </div>
   </section>
 
   <div class="marquee" aria-hidden="true">
     <div class="track">
-      <span>Kafe &amp; Resto</span><i>◆</i><span>Warung Makan</span><i>◆</i><span>Butik &amp; Fashion</span><i>◆</i><span>Oleh-Oleh</span><i>◆</i><span>Jasa</span><i>◆</i><span>Toko Kelontong</span><i>◆</i>
-      <span>Kafe &amp; Resto</span><i>◆</i><span>Warung Makan</span><i>◆</i><span>Butik &amp; Fashion</span><i>◆</i><span>Oleh-Oleh</span><i>◆</i><span>Jasa</span><i>◆</i><span>Toko Kelontong</span><i>◆</i>
+      <span>Kafe &amp; Resto</span><span>Warung Makan</span><span>Butik &amp; Fashion</span><span>Oleh-Oleh</span><span>Jasa</span><span>Toko Kelontong</span>
+      <span>Kafe &amp; Resto</span><span>Warung Makan</span><span>Butik &amp; Fashion</span><span>Oleh-Oleh</span><span>Jasa</span><span>Toko Kelontong</span>
     </div>
   </div>
 
   <section class="block" id="kategori">
     <div class="wrap">
-      <h2>Kategori template</h2>
-      <p class="sub">Enam gaya website toko. Setiap kategori punya gayanya sendiri: foto, warna, dan susunan halamannya.</p>
+      <h2 data-reveal>Kategori template</h2>
+      <p class="sub" data-reveal>Enam gaya website toko. Setiap kategori punya gayanya sendiri: foto, warna, dan susunan halamannya.</p>
       <div class="grid" id="grid-kategori">
-      <article class="card" data-cari="Kafe & Resto Buat kafe, resto, dan tempat ngopi. Menu, jam buka, dan lokasi jelas di satu halaman.">
+      <article class="card" data-cari="Kafe & Resto Buat kafe, resto, dan tempat ngopi. Menu, jam buka, dan lokasi jelas di satu halaman." data-reveal style="--i:0">
         <div class="media"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Latte_art_3.jpg/960px-Latte_art_3.jpg" alt="Latte art di atas cangkir kopi" loading="lazy"></div>
         <div class="body">
           <h3>Kafe &amp; Resto</h3>
           <p>Buat kafe, resto, dan tempat ngopi. Menu, jam buka, dan lokasi jelas di satu halaman.</p>
         </div>
       </article>
-      <article class="card" data-cari="Warung Makan Buat warung makan dan rumah makan. Daftar menu harian dan harga yang gampang dibaca.">
+      <article class="card" data-cari="Warung Makan Buat warung makan dan rumah makan. Daftar menu harian dan harga yang gampang dibaca." data-reveal style="--i:1">
         <div class="media"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Basket_of_Vegetables_%28Unsplash%29.jpg/960px-Basket_of_Vegetables_%28Unsplash%29.jpg" alt="Keranjang berisi sayuran segar" loading="lazy"></div>
         <div class="body">
           <h3>Warung Makan</h3>
           <p>Buat warung makan dan rumah makan. Daftar menu harian dan harga yang gampang dibaca.</p>
         </div>
       </article>
-      <article class="card" data-cari="Butik & Fashion Buat butik, toko baju, dan fashion. Katalog produk dengan foto dan harga.">
+      <article class="card" data-cari="Butik & Fashion Buat butik, toko baju, dan fashion. Katalog produk dengan foto dan harga." data-reveal style="--i:2">
         <div class="media"><img src="https://picsum.photos/id/535/1200/800" alt="Baju warna-warni di gantungan toko" loading="lazy"></div>
         <div class="body">
           <h3>Butik &amp; Fashion</h3>
           <p>Buat butik, toko baju, dan fashion. Katalog produk dengan foto dan harga.</p>
         </div>
       </article>
-      <article class="card" data-cari="Oleh-Oleh Buat toko oleh-oleh khas daerah. Produk unggulan dan paket kirim ke luar kota.">
+      <article class="card" data-cari="Oleh-Oleh Buat toko oleh-oleh khas daerah. Produk unggulan dan paket kirim ke luar kota." data-reveal style="--i:0">
         <div class="media"><img src="https://picsum.photos/id/312/1200/800" alt="Madu menetes dari sendok madu ke dalam mangkuk" loading="lazy"></div>
         <div class="body">
           <h3>Oleh-Oleh</h3>
           <p>Buat toko oleh-oleh khas daerah. Produk unggulan dan paket kirim ke luar kota.</p>
         </div>
       </article>
-      <article class="card" data-cari="Jasa Buat jasa laundry, servis, salon, dan bengkel. Layanan, tarif, dan cara order yang jelas.">
+      <article class="card" data-cari="Jasa Buat jasa laundry, servis, salon, dan bengkel. Layanan, tarif, dan cara order yang jelas." data-reveal style="--i:1">
         <div class="media"><img src="https://picsum.photos/id/308/1200/800" alt="Jemuran pakaian di antara rumah-rumah di jalan sempit" loading="lazy"></div>
         <div class="body">
           <h3>Jasa</h3>
           <p>Buat jasa laundry, servis, salon, dan bengkel. Layanan, tarif, dan cara order yang jelas.</p>
         </div>
       </article>
-      <article class="card" data-cari="Toko Kelontong Buat toko kelontong dan sembako. Barang harian, harga, dan jam buka toko.">
+      <article class="card" data-cari="Toko Kelontong Buat toko kelontong dan sembako. Barang harian, harga, dan jam buka toko." data-reveal style="--i:2">
         <div class="media"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Healthy_Grocery_Shopping_%28Unsplash%29.jpg/960px-Healthy_Grocery_Shopping_%28Unsplash%29.jpg" alt="Keranjang belanja berisi bahan makanan segar" loading="lazy"></div>
         <div class="body">
           <h3>Toko Kelontong</h3>
@@ -99,49 +104,49 @@
         </div>
       </article>
       </div>
-      <p class="empty" id="tidak-ada">Tidak ada kategori yang cocok dengan pencarianmu. Coba kata lain, misal “kafe” atau “butik”.</p>
+      <p class="empty" id="tidak-ada" hidden>Tidak ada kategori yang cocok dengan pencarianmu. Coba kata lain, misal “kafe” atau “butik”.</p>
     </div>
   </section>
 
   <section class="block" id="cara-kerja">
     <div class="wrap">
-      <h2>Cara kerja</h2>
-      <p class="sub">Dari kategori sampai website jadi, tiga langkah.</p>
-      <div class="steps">
-        <div class="step">
-          <div class="step-ic"><img src="assets/icons/search.svg" alt=""></div>
-          <h3>1. Pilih kategori</h3>
+      <h2 data-reveal>Cara kerja</h2>
+      <p class="sub" data-reveal>Dari kategori sampai website jadi, tiga langkah.</p>
+      <ol class="steps">
+        <li class="step" data-reveal style="--i:0">
+          <div class="step-ic"><img src="assets/icons/search.svg" alt="" aria-hidden="true"></div>
+          <h3>Pilih kategori</h3>
           <p>Cari gaya yang paling mirip dengan tokomu: kafe, warung, butik, atau yang lain.</p>
-        </div>
-        <div class="step">
-          <div class="step-ic"><img src="assets/icons/pen-line.svg" alt=""></div>
-          <h3>2. Sesuaikan datanya</h3>
+        </li>
+        <li class="step" data-reveal style="--i:1">
+          <div class="step-ic"><img src="assets/icons/pen-line.svg" alt="" aria-hidden="true"></div>
+          <h3>Sesuaikan datanya</h3>
           <p>Nama, menu atau produk, jam buka, dan foto diisi dengan data tokomu sendiri.</p>
-        </div>
-        <div class="step">
-          <div class="step-ic"><img src="assets/icons/check.svg" alt=""></div>
-          <h3>3. Website siap dipakai</h3>
+        </li>
+        <li class="step" data-reveal style="--i:2">
+          <div class="step-ic"><img src="assets/icons/check.svg" alt="" aria-hidden="true"></div>
+          <h3>Website siap dipakai</h3>
           <p>Satu halaman rapi untuk tokomu, langsung bisa dibuka dan dibagikan.</p>
-        </div>
-      </div>
+        </li>
+      </ol>
     </div>
   </section>
 
-  <section class="statement">
-    <div class="wrap">
-      <p>Satu gaya. Satu halaman. Langsung jadi.</p>
+  <section class="statement" id="pernyataan" aria-label="Pernyataan">
+    <div class="statement-pin">
+      <p id="statement-text"><span>Satu</span> <span>gaya.</span> <span>Satu</span> <span>halaman.</span> <span>Langsung</span> <span>jadi.</span></p>
     </div>
   </section>
 </main>
 
 <footer class="site">
   <div class="wrap">
-    <div><b>Katalog Template Website</b> — kumpulan gaya website toko. Contoh template tiap kategori segera hadir.</div>
-    <div>Foto: Alisa Anton, Kim Sanso, Markus Spiske dan Leonie Wise (Wikimedia Commons), Jeff Sheldon, Charles L. dan Sonja Langford (Unsplash). Foto contoh, bukan foto toko sebenarnya.</div>
+    <div><b>Katalog Template Website</b>, kumpulan gaya website toko. Contoh template tiap kategori segera hadir.</div>
+    <div>Foto: Kim Sanso, Markus Spiske dan Leonie Wise (Wikimedia Commons), Jeff Sheldon, Charles L. dan Sonja Langford (Unsplash). Foto contoh, bukan foto toko sebenarnya.</div>
   </div>
 </footer>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="js/vendor/gsap.min.js"></script>
+<script src="js/vendor/lottie.min.js"></script>
 <script type="module" src="js/hero3d.js"></script>
 <script src="js/app.js"></script>
 </body>
