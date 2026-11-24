@@ -1,11 +1,9 @@
 # template-website
 
-Website katalog Ragam Web: tempat memilih gaya (kategori) template website toko.
-Pengunjung memilih kategori, melihat contoh website jadi, lalu pesan lewat WhatsApp.
+Website katalog: tempat memilih gaya (kategori) template website toko.
+Pengunjung memilih kategori dan melihat contoh website jadi.
 
 - **Live (GitHub Pages):** https://kyratncrab.github.io/Templatewebsite/
-- **Harga:** Rp50.000 / 2 bulan, termasuk hosting + domain. Pengerjaan 1–2 hari.
-- **Kontak WhatsApp:** 0877-1346-6986
 
 ## Struktur folder
 
@@ -44,7 +42,7 @@ Setiap kategori punya 1 contoh (`contoh-1`). Contoh berikutnya memakai pola yang
 
 - **Edit saja, jangan coding ulang.** Contoh template boleh diubah isinya (nama toko, alamat, kontak, jam buka, menu/produk, foto, warna aksen) — jangan ubah struktur, class CSS, atau file lain.
 - Satu contoh template = satu file `index.html` self-contained. Jangan pecah jadi beberapa file.
-- Foto toko didapat dari chat WhatsApp dengan pemilik toko. Foto di katalog ini adalah foto contoh berlisensi bebas (lihat kredit di footer `index.html`), bukan foto toko sebenarnya.
+- Foto di katalog ini adalah foto contoh berlisensi bebas (lihat kredit di footer `index.html`), bukan foto toko sebenarnya.
 - Jangan menambah dependency berbayar, database, atau login. Website ini statis.
 - Setelah menambah kategori/contoh, update `data/catalog.json` dan `CATALOG.md` supaya katalog dan manifest selalu sama.
 

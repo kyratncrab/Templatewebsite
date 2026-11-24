@@ -1,15 +1,5 @@
 {
-  "site": "Ragam Web — Katalog Template Website Toko",
-  "price": {
-    "amount_rupiah": 50000,
-    "duration_months": 2,
-    "includes": [
-      "hosting",
-      "domain"
-    ],
-    "build_days": "1-2"
-  },
-  "whatsapp": "6287713466986",
+  "site": "Katalog Template Website Toko",
   "categories": [
     {
       "slug": "kafe-resto",

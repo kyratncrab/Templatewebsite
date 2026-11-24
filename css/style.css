@@ -1,4 +1,4 @@
-/* Ragam Web — katalog template. Satu sistem: satu tombol, satu kartu, satu radius. */
+/* Katalog template website toko. Satu sistem: satu tombol, satu kartu, satu radius. */
 :root { --bg:#faf7f2; --surface:#ffffff; --ink:#211c16; --muted:#6f675c; --line:#e8e0d4;
   --accent:#7c4a21; --radius:14px; --wrap:1080px; }
 * { box-sizing:border-box; margin:0; padding:0; }

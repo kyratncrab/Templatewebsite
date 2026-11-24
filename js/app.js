@@ -1,4 +1,4 @@
-// Ragam Web — katalog: cari kategori berdasarkan nama atau deskripsi.
+// Katalog template: cari kategori berdasarkan nama atau deskripsi.
 (function () {
   var input = document.getElementById("cari");
   var cards = Array.prototype.slice.call(document.querySelectorAll("#grid-kategori .card"));

@@ -1,6 +1,6 @@
-# Katalog Template — Ragam Web
+# Katalog Template Website Toko
 
-Website katalog untuk memilih gaya website toko. Harga Rp50.000 / 2 bulan, termasuk hosting + domain, pengerjaan 1–2 hari.
+Website katalog untuk memilih gaya website toko. Setiap kategori punya contoh website jadi.
 
 ## Kategori
 
