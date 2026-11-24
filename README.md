@@ -3,25 +3,26 @@
 Website katalog: tempat memilih gaya (kategori) template website toko.
 Pengunjung memilih kategori dan melihat gayanya. Contoh template tiap kategori segera hadir.
 
-## Desain (tema Spore gelap + 3D, rombak modern)
+## Desain (tema Midnight 3D, rombak total)
 
-- Tema Hallmark Spore (cellar): latar hitam kopi `#0f0a06`, tinta perkamen
-  `#efe7d8`, satu sinyal pink oyster `#e89f92`. Palet diverifikasi Leonardo
-  (tinta 16.03:1, muted 6.53:1, pink 9.20:1). Aturan lengkap di `DESIGN.md`.
-- Hero stage menempel (sticky): canvas three.js lokal (`js/vendor/three.module.min.js`,
-  three@0.187.0) — kristal melayang, cincin orbit, 14 satelit, dan partikel
-  yang mengikuti arah kursor; klik meledak jadi partikel; kamera bergeser
-  mengikuti kursor. Tanpa WebGL, hero tetap tampil.
-- Kategori dalam grid bento 4 kolom (Kafe 2x2, Oleh-Oleh/Jasa/Kelontong lebar),
-  kartu foto penuh dengan scrim, spotlight + tilt mengikuti kursor.
-- Scroll: satu loop rAF ala scrolltide — progress bar + jalur "Cara kerja"
-  yang tergambar sendiri (3 kaki + rider). Marquee outline. Penutup wordmark
-  "Template Website" pas-lebar (fitText).
+- Tema Hallmark Midnight: latar biru tengah malam `#02071d`, tinta putih
+  dingin `#e7f0f9`, satu sinyal azure `#6bcbf7`. Palet diverifikasi Leonardo
+  (tinta 17.35:1, muted 8.36:1, azure 10.96:1). Aturan lengkap di `DESIGN.md`.
+  Semua sudut kotak, tanpa grain, tanpa kaca/blur, tanpa gradasi.
+- Hero dunia 3D full-screen: canvas three.js lokal (`js/vendor/three.module.min.js`,
+  three@0.187.0) — lapangan 18 bentuk geometri + bintang + kabut yang
+  mengikuti arah kursor; klik di mana saja meledak jadi partikel (raycast).
+  Judul duduk di tanah gelap di bawah. Tanpa WebGL, hero tetap tampil.
+- Kategori jadi reel menyamping (scrolltide reel): section menempel 340svh,
+  scroll ke bawah menggeser kartu ke samping; kartu di garis fokus tajam,
+  sisanya redup. Di HP jadi geser horizontal biasa.
+- "Cara kerja" jadi log malam: tiga baris bernomor dengan meter 2px yang
+  terisi mengikuti scroll. Penutup: angka "6" besar sebagai pernyataan.
 - Animasi: GSAP lokal (`js/vendor/gsap.min.js`) untuk entrance hero;
   lottie-web lokal (`js/vendor/lottie.min.js`) untuk petunjuk scroll.
   Kalau vendor gagal dimuat, semua konten tetap terlihat.
-- Hormati `prefers-reduced-motion`: animasi dan loop 3D dimatikan; jalur
-  tergambar diganti daftar langkah statis.
+- Hormati `prefers-reduced-motion`: animasi dan loop 3D dimatikan; reel
+  jadi daftar geser horizontal.
 
 - **Live (GitHub Pages):** https://kyratncrab.github.io/Templatewebsite/
 

@@ -7,14 +7,14 @@ berikutnya; kalau ada yang bertentangan, aturan Iky menang.
 ## Aturan dari Iky
 
 1. **Gelap, tanpa warna cerah.** (Iky, 2026-11-24: "jangan pake warna cerah")
-   Latar hitam kopi `#0f0a06`, tinta perkamen `#efe7d8`, satu sinyal pink
-   oyster `#e89f92`. Tidak ada warna cerah lain di mana pun.
+   Latar biru tengah malam `#02071d`, tinta putih dingin `#e7f0f9`, satu
+   sinyal azure `#6bcbf7`. Tidak ada warna cerah lain di mana pun.
 2. **Animasi dan 3D di homepage, supaya CS kagum.** (Iky, 2026-11-24: "manfaatkan
    gaya animasi dan 3d, soalnya misi kita ini membuat cs kagum dengan gaya
    website kita yang moderen dan animasi 3d")
-   Hero memakai kristal three.js yang mengikuti kursor; klik meledak jadi
-   partikel. Scroll menggerakkan satu momen: jalur "Cara kerja" yang
-   tergambar sendiri. Fokus homepage dulu.
+   Hero adalah dunia 3D full-screen: lapangan bentuk yang melayang mengikuti
+   kursor; klik di mana saja meledak jadi partikel. Scroll menggerakkan reel
+   kategori ke samping. Fokus homepage dulu.
 3. **Lupakan Ragam Web, mulai dari 0.** (Iky, 2026-11-24: "lupakan ragam web")
    Tidak ada brand, harga, atau nomor WA di katalog ini.
 4. **Jangan ada contoh template dulu.** (Iky, 2026-11-24: "jangan ada contoh
@@ -25,37 +25,58 @@ berikutnya; kalau ada yang bertentangan, aturan Iky menang.
    tema animasi grid dll pokok rombak semua ganti yang lebih moderen")
    Tema diganti Kiln ke Spore, grid biasa ke bento, langkah ke jalur
    tergambar, hero jadi stage menempel, kartu punya spotlight + tilt.
+6. **Rombak total, tidak boleh mirip sama sekali, tema 3D animasi.** (Iky,
+   2026-11-24: "ini mah mirip banget aku ingin rombak semuanya biar gak mirip
+   sama sekali aku mau tema 3d animasi")
+   Semuanya diganti: tema Spore ke Midnight (biru dingin, grotesk, kotak),
+   hero split ke dunia 3D full-screen, kristal ke lapangan bentuk, grid/bento
+   ke reel menyamping, langkah ke log malam, foto ke 6 foto baru, judul ke
+   "Toko kamu, dalam 3D.", wordmark dihapus.
 
 ## Sistem (kombinasi tools)
 
-- **Tema: Hallmark Spore (cellar).** Hitam kopi, tinta perkamen, pink oyster
-  sebagai satu sinyal. Young Serif (display, satu weight) + Instrument Sans
-  (body). Foto radius 14px, input kotak dengan tepi 1.5px, tombol pil 50px.
-  Grain halus di tile dan band. Tidak ada eyebrow/kicker di atas heading.
-- **Palet diverifikasi Leonardo.** Tinta 16.03:1, muted 6.53:1, pink 9.20:1,
-  teks gelap di atas pink 9.20:1 (semua lulus WCAG). Token ada di `:root`
+- **Tema: Hallmark Midnight.** Biru tengah malam, tinta putih dingin, azure
+  sebagai satu sinyal. Mona Sans: display 300 lebar 125%, body 400 lebar
+  normal, satu keluarga dua lebar. Semua sudut kotak (radius 0). Tanpa
+  grain, tanpa kaca/blur, tanpa gradasi, tanpa bloom.
+- **Palet diverifikasi Leonardo.** Tinta 17.35:1, muted 8.36:1, azure 10.96:1,
+  teks gelap di atas azure 10.65:1 (semua lulus WCAG). Token ada di `:root`
   `css/style.css`; jangan pakai warna literal di luar token.
 - **Vendor lokal, tanpa CDN untuk JS.** `js/vendor/three.module.min.js`
   (three.js), `js/vendor/gsap.min.js` (GSAP), `js/vendor/lottie.min.js`
   (lottie-web). Importmap menunjuk file lokal. Font Google Fonts dan foto
   remote (Wikimedia/Picsum) tetap dari luar.
-- **Layout: bento + stage (scrolltide layers).** Hero menempel (sticky) dan
-  bento naik menutupinya. Kategori dalam grid bento 4 kolom: Kafe 2x2,
-  Oleh-Oleh/Jasa/Kelontong lebar 2 kolom. Marquee outline. Penutup: wordmark
-  "Template Website" pas-lebar (fitText).
-- **Scroll: satu momen (scrolltide drawn).** Satu loop rAF menggerakkan
-  progress bar dan jalur "Cara kerja" yang tergambar sendiri (3 kaki +
-  rider + teks langkah berganti). Section lain memakai reveal `data-reveal`
-  + `.is-in`, tetap terlihat tanpa JS. Tidak ada Lenis dan tidak ada
-  ScrollTrigger — satu mesin scroll saja.
-- **Kartu: spotlight + tilt (gestures).** Kursor menyalakan cahaya pink di
-  kartu dan memiringkannya maks. 6 derajat; hanya di perangkat hover.
+- **Hero: dunia 3D full-screen (scrolltide layers).** Canvas menutupi seluruh
+  viewport; judul duduk di tanah gelap di bawah; bentuk-bentuk hidup di
+  bagian atas. Tidak ada split hero, tidak ada scrim gradasi.
+- **Kategori: reel menyamping (scrolltide reel).** Section menempel 340svh;
+  scroll ke bawah menggeser kartu ke samping; kartu di garis fokus tajam dan
+  penuh, sisanya redup dan mengecil; foto di dalam frame bergeser sedikit.
+  Di HP, reel jadi geser horizontal biasa (scroll-snap).
+- **Langkah: log malam.** Tiga baris bernomor dengan meter 2px yang terisi
+  mengikuti scroll; langkah aktif tinta terang, sisanya redup.
+- **Penutup: satu angka sebagai pernyataan.** Angka "6" besar + "gaya" +
+  satu kalimat + tombol azure.
+- **Scroll: satu loop rAF (scrolltide engine).** Progress bar + reel +
+  meter log. Section lain memakai reveal `data-reveal` + `.is-in`, tetap
+  terlihat tanpa JS. Tidak ada Lenis dan tidak ada ScrollTrigger — satu
+  mesin scroll saja.
 - **Gerakan: motion Premium.** Easing khas `cubic-bezier(0.4,0,0.2,1)`;
   durasi cepat 150ms, standar 350ms, lambat 600ms. Entrance hero satu
   gelombang: lead dulu, support menyusul, dekorasi hanya fade.
 - **Koreografi (choreograph).** Satu entrance per container; stagger
-  120ms di hero; kartu stagger maks. 3 pertama; interaksi tidak pernah
-  diblokir animasi.
+  120ms di hero; interaksi tidak pernah diblokir animasi.
+- **Performa (animation-performance + review-animations).** Hanya
+  `transform` dan `opacity` yang dianimasikan; tidak ada `transition: all`;
+  hover hanya di `@media (hover:hover) and (pointer:fine)`; `prefers-reduced-motion`
+  mematikan gerakan (konten tetap terlihat, reel jadi daftar geser).
+- **Mobile (mobile-native).** Hero `100svh`, `-webkit-tap-highlight-color`
+  transparent, input 16px (tidak zoom), safe-area di header/footer.
+- **Ikon: Lucide.** Semua ikon dari `assets/icons/` (satu gaya stroke).
+  Tidak ada emoji atau glyph sebagai ikon.
+- **3D: reanimate.** Dunia 3D mengikuti referensi "Website 3D Animasi":
+  lapangan 18 bentuk geometri + bintang + kabut + klik meledak (raycast ke
+  titik klik) + kamera parallax mengikuti kursor.
 - **Performa (animation-performance + review-animations).** Hanya
   `transform` dan `opacity` yang dianimasikan; tidak ada `transition: all`;
   hover hanya di `@media (hover:hover) and (pointer:fine)`; `prefers-reduced-motion`
@@ -64,9 +85,9 @@ berikutnya; kalau ada yang bertentangan, aturan Iky menang.
   transparent, input 16px (tidak zoom), safe-area di header/footer.
 - **Ikon: Lucide.** Semua ikon dari `assets/icons/` (satu gaya stroke).
   Tidak ada emoji atau glyph sebagai ikon.
-- **3D: reanimate.** Hero 3D mengikuti referensi "Website 3D Animasi":
-  kristal + cincin orbit + satelit + partikel + klik meledak + ikut kursor
-  + kamera bergeser mengikuti kursor.
+- **3D: reanimate.** Dunia 3D mengikuti referensi "Website 3D Animasi":
+  lapangan 18 bentuk geometri + bintang + kabut + klik meledak (raycast ke
+  titik klik) + kamera parallax mengikuti kursor.
 
 ## Yang tidak dipakai di homepage ini (dan alasannya)
 
