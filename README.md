@@ -1,7 +1,7 @@
 # template-website
 
 Website katalog: tempat memilih gaya (kategori) template website toko.
-Pengunjung memilih kategori dan melihat contoh website jadi.
+Pengunjung memilih kategori dan melihat gayanya. Contoh template tiap kategori segera hadir.
 
 - **Live (GitHub Pages):** https://kyratncrab.github.io/Templatewebsite/
 
@@ -16,14 +16,14 @@ template-website/
 ├── css/style.css        # gaya halaman katalog
 ├── js/app.js            # pencarian kategori
 ├── assets/icons/        # ikon Lucide (SVG) yang dipakai katalog
-└── templates/           # contoh template per kategori
+└── templates/           # draf contoh template per kategori (belum ditautkan dari homepage)
     └── <slug-kategori>/ # misal: kafe-resto/
         └── contoh-1/    # satu contoh = satu folder, satu file index.html
             └── index.html   # contoh lengkap, gaya inline (self-contained)
 ```
 
 Kategori saat ini (6): `kafe-resto`, `warung-makan`, `butik-fashion`, `oleh-oleh`, `jasa`, `toko-kelontong`.
-Setiap kategori punya 1 contoh (`contoh-1`). Contoh berikutnya memakai pola yang sama: `contoh-2`, `contoh-3`, dst.
+Contoh template tiap kategori belum ditautkan dari homepage; drafnya ada di `templates/` dan ditautkan nanti saat contohnya siap.
 
 ## Menambah kategori baru
 
@@ -32,11 +32,11 @@ Setiap kategori punya 1 contoh (`contoh-1`). Contoh berikutnya memakai pola yang
 3. Buat folder `templates/<slug>/contoh-1/index.html` dengan contoh lengkap.
 4. Update `CATALOG.md`.
 
-## Menambah contoh template baru
+## Menambah contoh template baru (nanti, saat contoh siap ditautkan)
 
 1. Salin folder `templates/<slug>/contoh-1/` menjadi `templates/<slug>/contoh-2/`.
 2. Edit hanya data di dalamnya (nama toko, menu/produk, harga, jam, alamat).
-3. Tambah entri di `data/catalog.json` dan `CATALOG.md`.
+3. Tambah entri `templates` di `data/catalog.json`, update `CATALOG.md`, dan tautkan dari `index.html`.
 
 ## Aturan untuk agent website (penting)
 

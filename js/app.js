@@ -2,7 +2,6 @@
 (function () {
   var input = document.getElementById("cari");
   var cards = Array.prototype.slice.call(document.querySelectorAll("#grid-kategori .card"));
-  var details = Array.prototype.slice.call(document.querySelectorAll(".detail"));
   var empty = document.getElementById("tidak-ada");
   if (!input) return;
   input.addEventListener("input", function () {
@@ -14,10 +13,6 @@
       card.style.display = ok ? "" : "none";
       if (ok) shown++;
     });
-    details.forEach(function (d) {
-      var hay = (d.getAttribute("data-cari") || "").toLowerCase();
-      d.style.display = !q || hay.indexOf(q) !== -1 ? "" : "none";
-    });
-    empty.style.display = shown === 0 ? "block" : "none";
+    empty.classList.toggle("show", shown === 0);
   });
 })();
