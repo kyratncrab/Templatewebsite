@@ -7,128 +7,159 @@
 <meta name="description" content="Template website satu halaman untuk kafe, warung makan, butik, oleh-oleh, jasa, dan toko kelontong. Pilih kategorinya, isi datanya, website langsung jadi.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header class="site-header">
-  <div class="wrap header-inner">
-    <a class="logo" href="#">Katalog <span>Template</span></a>
-    <nav aria-label="Navigasi utama">
-      <a href="#kategori">Kategori</a>
-      <a href="#cara-kerja">Cara kerja</a>
-    </nav>
-  </div>
-</header>
+<a class="skip" href="#daftar">Lewati ke daftar kategori</a>
+<div class="layout">
 
-<main>
-  <section class="hero">
-    <div class="wrap">
-      <h1>Website toko,<br><span class="accent">siap dipakai.</span></h1>
-      <p class="lead">Template satu halaman untuk kafe, warung, butik, oleh-oleh, jasa, dan kelontong.</p>
-      <form class="search" id="search" role="search" action="#kategori">
-        <label class="visually-hidden" for="cari">Cari kategori template</label>
-        <input id="cari" name="cari" type="search" placeholder="Cari kategori: kafe, butik, laundry…" autocomplete="off">
+  <aside class="rail">
+    <div class="rail-inner">
+      <p class="kicker">Katalog &middot; 6 template</p>
+      <h1>Template Website Toko</h1>
+      <p class="intro">Satu halaman untuk tokomu. Pilih jenis usahamu di sebelah, isi datanya, website langsung jadi.</p>
+
+      <form class="search" id="search" role="search" action="#daftar">
+        <label for="cari">Cari kategori</label>
+        <input id="cari" name="cari" type="search" placeholder="Kafe, butik, laundry&hellip;" autocomplete="off">
         <button type="submit">Cari</button>
       </form>
-      <figure class="hero-photo">
-        <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Basket_of_Vegetables_%28Unsplash%29.jpg/960px-Basket_of_Vegetables_%28Unsplash%29.jpg" alt="Keranjang berisi sayuran segar di pasar" width="960" height="640" loading="eager">
+      <p class="hasil" id="hasil" aria-live="polite">Menampilkan 6 dari 6 kategori</p>
+
+      <section class="kerja" aria-labelledby="kerja-judul">
+        <h2 id="kerja-judul">Cara kerja</h2>
+        <ol>
+          <li>
+            <span class="step-num" aria-hidden="true">01</span>
+            <div>
+              <h3>Pilih kategori</h3>
+              <p>Cari yang paling dekat dengan usahamu.</p>
+            </div>
+          </li>
+          <li>
+            <span class="step-num" aria-hidden="true">02</span>
+            <div>
+              <h3>Sesuaikan datanya</h3>
+              <p>Nama toko, alamat, menu atau produk, foto, dan jam buka.</p>
+            </div>
+          </li>
+          <li>
+            <span class="step-num" aria-hidden="true">03</span>
+            <div>
+              <h3>Website siap dipakai</h3>
+              <p>Satu halaman, langsung bisa dibagikan ke pelanggan.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <p class="rail-note">Contoh template tiap kategori sedang disiapkan.</p>
+    </div>
+  </aside>
+
+  <main class="daftar" id="daftar">
+    <article class="kategori" data-cari="kafe resto kopi restoran menu jam buka lokasi">
+      <header class="kategori-head">
+        <span class="num" aria-hidden="true">01</span>
+        <div>
+          <p class="jenis">Kafe &middot; Resto &middot; Kopi</p>
+          <h2>Kafe &amp; Resto</h2>
+        </div>
+      </header>
+      <figure class="foto">
+        <img src="https://picsum.photos/id/431/960/640" alt="Secangkir kopi latte di atas meja kayu kafe, di samping bel dan struk" width="960" height="640" loading="eager">
       </figure>
+      <p class="desc">Buat kafe, resto, dan tempat ngopi. Menu, jam buka, dan lokasi jelas di satu halaman.</p>
+      <p class="isi"><span>Isi template</span> Menu &middot; Jam buka &middot; Lokasi &middot; Foto</p>
+    </article>
+
+    <article class="kategori" data-cari="warung makan rumah makan depot menu harian harga">
+      <header class="kategori-head">
+        <span class="num" aria-hidden="true">02</span>
+        <div>
+          <p class="jenis">Warung &middot; Rumah makan</p>
+          <h2>Warung Makan</h2>
+        </div>
+      </header>
+      <figure class="foto">
+        <img src="https://picsum.photos/id/488/960/640" alt="Mangkuk berisi sayuran dan salad di atas talenan kayu" width="960" height="640" loading="lazy">
+      </figure>
+      <p class="desc">Buat warung makan dan rumah makan. Daftar menu harian dan harga yang gampang dibaca.</p>
+      <p class="isi"><span>Isi template</span> Menu harian &middot; Harga &middot; Jam buka</p>
+    </article>
+
+    <article class="kategori" data-cari="butik fashion toko baju sepatu katalog produk foto harga">
+      <header class="kategori-head">
+        <span class="num" aria-hidden="true">03</span>
+        <div>
+          <p class="jenis">Butik &middot; Fashion &middot; Baju</p>
+          <h2>Butik &amp; Fashion</h2>
+        </div>
+      </header>
+      <figure class="foto">
+        <img src="https://picsum.photos/id/21/960/640" alt="Sepasang sepatu hak tinggi berwarna putih" width="960" height="640" loading="lazy">
+      </figure>
+      <p class="desc">Buat butik, toko baju, dan fashion. Katalog produk dengan foto dan harga.</p>
+      <p class="isi"><span>Isi template</span> Katalog produk &middot; Foto &middot; Harga</p>
+    </article>
+
+    <article class="kategori" data-cari="oleh-oleh khas daerah produk unggulan paket kirim madu">
+      <header class="kategori-head">
+        <span class="num" aria-hidden="true">04</span>
+        <div>
+          <p class="jenis">Oleh-oleh &middot; Khas daerah</p>
+          <h2>Oleh-Oleh</h2>
+        </div>
+      </header>
+      <figure class="foto">
+        <img src="https://picsum.photos/id/312/960/640" alt="Sendok madu di atas wadah berisi madu" width="960" height="640" loading="lazy">
+      </figure>
+      <p class="desc">Buat toko oleh-oleh khas daerah. Produk unggulan dan paket kirim ke luar kota.</p>
+      <p class="isi"><span>Isi template</span> Produk unggulan &middot; Paket kirim &middot; Harga</p>
+    </article>
+
+    <article class="kategori" data-cari="jasa laundry servis salon bengkel layanan tarif order">
+      <header class="kategori-head">
+        <span class="num" aria-hidden="true">05</span>
+        <div>
+          <p class="jenis">Jasa &middot; Laundry &middot; Servis</p>
+          <h2>Jasa</h2>
+        </div>
+      </header>
+      <figure class="foto">
+        <img src="https://picsum.photos/id/445/960/640" alt="Meja kerja dengan laptop, ponsel, dan gunting" width="960" height="640" loading="lazy">
+      </figure>
+      <p class="desc">Buat jasa laundry, servis, salon, dan bengkel. Layanan, tarif, dan cara order yang jelas.</p>
+      <p class="isi"><span>Isi template</span> Layanan &middot; Tarif &middot; Cara order</p>
+    </article>
+
+    <article class="kategori" data-cari="toko kelontong sembako barang harian harga jam buka sayur">
+      <header class="kategori-head">
+        <span class="num" aria-hidden="true">06</span>
+        <div>
+          <p class="jenis">Kelontong &middot; Sembako</p>
+          <h2>Toko Kelontong</h2>
+        </div>
+      </header>
+      <figure class="foto">
+        <img src="https://picsum.photos/id/292/960/640" alt="Bawang merah, sayuran, dan lada di atas talenan kayu" width="960" height="640" loading="lazy">
+      </figure>
+      <p class="desc">Buat toko kelontong dan sembako. Barang harian, harga, dan jam buka toko.</p>
+      <p class="isi"><span>Isi template</span> Barang harian &middot; Harga &middot; Jam buka</p>
+    </article>
+
+    <div class="kosong" id="kosong" hidden>
+      <p>Tidak ada kategori yang cocok dengan &ldquo;<span id="kosong-kata"></span>&rdquo;.</p>
+      <button type="button" id="reset-cari">Tampilkan semua kategori</button>
     </div>
-  </section>
 
-  <section class="kategori" id="kategori">
-    <div class="wrap">
-      <h2>Enam jenis toko.</h2>
-      <p class="section-intro">Setiap kategori punya satu gaya template satu halaman. Contoh template untuk setiap kategori sedang disiapkan.</p>
-      <ul class="index" id="index">
-        <li class="index-row" data-cari="kafe resto kopi restoran menu jam buka lokasi">
-          <span class="index-num" aria-hidden="true">01</span>
-          <div>
-            <h3>Kafe &amp; Resto</h3>
-            <p>Buat kafe, resto, dan tempat ngopi. Menu, jam buka, dan lokasi jelas di satu halaman.</p>
-          </div>
-        </li>
-        <li class="index-row" data-cari="warung makan rumah makan depot menu harian harga">
-          <span class="index-num" aria-hidden="true">02</span>
-          <div>
-            <h3>Warung Makan</h3>
-            <p>Buat warung makan dan rumah makan. Daftar menu harian dan harga yang gampang dibaca.</p>
-          </div>
-        </li>
-        <li class="index-row" data-cari="butik fashion toko baju katalog produk foto harga">
-          <span class="index-num" aria-hidden="true">03</span>
-          <div>
-            <h3>Butik &amp; Fashion</h3>
-            <p>Buat butik, toko baju, dan fashion. Katalog produk dengan foto dan harga.</p>
-          </div>
-        </li>
-        <li class="index-row" data-cari="oleh-oleh khas daerah produk unggulan paket kirim">
-          <span class="index-num" aria-hidden="true">04</span>
-          <div>
-            <h3>Oleh-Oleh</h3>
-            <p>Buat toko oleh-oleh khas daerah. Produk unggulan dan paket kirim ke luar kota.</p>
-          </div>
-        </li>
-        <li class="index-row" data-cari="jasa laundry servis salon bengkel layanan tarif order">
-          <span class="index-num" aria-hidden="true">05</span>
-          <div>
-            <h3>Jasa</h3>
-            <p>Buat jasa laundry, servis, salon, dan bengkel. Layanan, tarif, dan cara order yang jelas.</p>
-          </div>
-        </li>
-        <li class="index-row" data-cari="toko kelontong sembako barang harian harga jam buka">
-          <span class="index-num" aria-hidden="true">06</span>
-          <div>
-            <h3>Toko Kelontong</h3>
-            <p>Buat toko kelontong dan sembako. Barang harian, harga, dan jam buka toko.</p>
-          </div>
-        </li>
-      </ul>
-      <div class="kosong" id="kosong" hidden>
-        <p>Tidak ada kategori yang cocok dengan “<span id="kosong-kata"></span>”.</p>
-        <button type="button" id="reset-cari">Tampilkan semua kategori</button>
-      </div>
-    </div>
-  </section>
+    <footer class="site-footer">
+      <p>Katalog Template Website Toko. Foto contoh, bukan foto toko sebenarnya: Carli Jean, Monstruo Estudio, Alejandro Escamilla, Sonja Langford, Aleksi Tappura, Webvilla (via Picsum / Unsplash). Contoh template sedang disiapkan.</p>
+    </footer>
+  </main>
 
-  <section class="cara-kerja" id="cara-kerja">
-    <div class="wrap">
-      <h2>Tiga langkah, website jadi.</h2>
-      <ol class="steps">
-        <li>
-          <span class="step-num" aria-hidden="true">01</span>
-          <h3>Pilih kategori</h3>
-          <p>Cari kategori yang paling dekat dengan usahamu.</p>
-        </li>
-        <li>
-          <span class="step-num" aria-hidden="true">02</span>
-          <h3>Sesuaikan datanya</h3>
-          <p>Nama toko, alamat, menu atau produk, foto, dan jam buka.</p>
-        </li>
-        <li>
-          <span class="step-num" aria-hidden="true">03</span>
-          <h3>Website siap dipakai</h3>
-          <p>Satu halaman, langsung bisa dibagikan ke pelanggan.</p>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <section class="penutup">
-    <div class="wrap">
-      <h2>Punya toko? Website-nya bisa jadi hari ini.</h2>
-      <a class="btn" href="#kategori">Cari kategori</a>
-    </div>
-  </section>
-</main>
-
-<footer class="site-footer">
-  <div class="wrap">
-    <p>Katalog Template Website Toko. Foto: Markus Spiske (Wikimedia Commons). Foto contoh, bukan foto toko sebenarnya. Contoh template sedang disiapkan.</p>
-  </div>
-</footer>
-
+</div>
 <script src="js/app.js" defer></script>
 </body>
 </html>

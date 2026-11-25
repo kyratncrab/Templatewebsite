@@ -174,3 +174,56 @@ berikutnya; kalau ada yang bertentangan, aturan Iky yang terbaru menang.
   `js/vendor/lottie*`, `assets/buildings/`, `assets/hero-city.svg`.
   File `templates/<slug>/contoh-1/index.html` tetap ada tapi TIDAK
   ditautkan dari homepage sampai Iky bilang siap.
+
+9. **Rombak homepage lagi: Split / Rail, bukan hero + daftar.**
+   (Iky, 2026-11-25 00:05, side chat: "Rombak homepage Templatewebsite lagi")
+   Aturan ini MENGGANTIKAN sistem editorial (aturan 8) sebagai tampilan
+   homepage, tapi aturan 8 soal "bukan AI slop, bukan kartun, tanpa contoh
+   dulu, fokus homepage" TETAP berlaku: tidak ada link "Lihat template"
+   ke `templates/` di homepage; contoh tetap draf tak tertaut.
+   Struktur baru, beda total dari semua versi sebelumnya: TIDAK ADA hero,
+   grid/bento/reel, daftar indeks, section penutup, marquee, atau wordmark.
+   Halaman dua kolom: rel kiri MENEMPEL (judul + cari + cara kerja +
+   catatan), kolom kanan 6 artikel kategori, masing-masing dengan satu
+   foto asli + daftar "Isi template". Search dan cara kerja pindah ke rel.
+
+## Sistem (Split / Rail, 2026-11-25)
+
+- **Tema: Split grotesk.** Putih `#ffffff`, kertas rel `#f4f1ea`, tinta
+  `#161513`, muted `#5e5a52`, aksen hijau tua `#1e4d38`, garis `#ddd8cd`.
+  Datar: tanpa gradasi, tanpa kaca, tanpa bayangan, radius 0, tanpa ungu.
+  Font Archivo (display 500-800) + Inter (body 400-600).
+- **Palet diverifikasi (python, rasio kontras).** Tinta/putih 18.25:1,
+  muted/putih 6.86:1, aksen/putih 9.66:1, tinta/kertas 16.18:1,
+  muted/kertas 6.08:1, aksen/kertas 8.56:1, putih/aksen 9.66:1 (semua
+  lulus WCAG AA). Token ada di `:root` `css/style.css`.
+- **Rel kiri (360px, sticky).** Kicker "Katalog · 6 template", judul
+  "Template Website Toko", intro 2 kalimat, search (label terlihat,
+  input + tombol penuh), penghitung hasil "Menampilkan X dari 6 kategori"
+  (aria-live), cara kerja 3 langkah ringkas, catatan contoh disiapkan.
+- **Kolom kanan: 6 artikel.** Masing-masing: nomor besar aksen + label
+  jenis huruf kapital + nama Archivo 800, foto asli 3:2 (satu per
+  kategori, dicek visual sebelum push, semua 200), deskripsi, daftar
+  "Isi template". Tanpa link, tanpa tombol, tanpa gambar kedua.
+  Foto (Picsum, kredit di footer): 431 Carli Jean (latte, kafe),
+  488 Monstruo Estudio (salad, warung), 21 Alejandro Escamilla
+  (sepatu putih, butik), 312 Sonja Langford (madu, oleh-oleh),
+  445 Aleksi Tappura (meja kerja laptop, jasa), 292 Webvilla
+  (sayuran, kelontong). Foto adalah contoh berlisensi bebas, bukan
+  foto toko sebenarnya.
+- **Pencarian.** Filter langsung saat mengetik (data-cari + teks artikel);
+  submit form (`?cari=`) ikut memfilter saat halaman dimuat; penghitung
+  hasil ikut berubah; state kosong + tombol reset. Search di rel, bukan
+  di hero (tidak ada hero).
+- **Tanpa JS berat.** Hanya `js/app.js` (pencarian + penghitung). Tidak
+  ada canvas, tidak ada three.js, tidak ada loader, tidak ada
+  reveal/tilt/parallax. Satu-satunya gerak: foto membesar 1.02 saat
+  hover (pointer halus saja), dan itu pun mati di reduced-motion.
+- **Responsif.** Di bawah 900px rel jadi atas (tidak sticky), artikel
+  menumpuk satu kolom, foto tetap 3:2.
+- **File lama yang tidak lagi dipakai homepage (tetap ada di repo karena
+  snapshot push tidak bisa menghapus):** `js/hero3d.js`,
+  `js/vendor/three.module.min.js` + `three.core.js`, `js/vendor/gsap*`,
+  `js/vendor/lottie*`, `assets/buildings/`, `assets/hero-city.svg`.
+  File `templates/<slug>/contoh-1/index.html` tetap ada tapi TIDAK
+  ditautkan dari homepage sampai Iky bilang siap.

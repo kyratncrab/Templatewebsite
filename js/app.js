@@ -3,9 +3,10 @@
 (function () {
   var form = document.getElementById("search");
   var input = document.getElementById("cari");
-  var rows = Array.prototype.slice.call(document.querySelectorAll(".index-row"));
+  var rows = Array.prototype.slice.call(document.querySelectorAll(".kategori"));
   var kosong = document.getElementById("kosong");
   var kosongKata = document.getElementById("kosong-kata");
+  var hasil = document.getElementById("hasil");
   var resetBtn = document.getElementById("reset-cari");
   if (!form || !input || !rows.length) return;
 
@@ -24,13 +25,18 @@
     var empty = q && shown === 0;
     kosong.hidden = !empty;
     if (empty) kosongKata.textContent = q;
+    if (hasil) {
+      hasil.textContent = q
+        ? "Menampilkan " + shown + " dari " + rows.length + " kategori"
+        : "Menampilkan " + rows.length + " dari " + rows.length + " kategori";
+    }
     return shown;
   }
   input.addEventListener("input", function () { filter(input.value); });
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     filter(input.value);
-    document.getElementById("kategori").scrollIntoView({ behavior: "smooth" });
+    document.getElementById("daftar").scrollIntoView({ behavior: "smooth" });
   });
   if (resetBtn) resetBtn.addEventListener("click", function () {
     input.value = "";

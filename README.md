@@ -3,32 +3,31 @@
 Website katalog: tempat memilih gaya (kategori) template website toko.
 Pengunjung memilih kategori dan melihat gayanya. Contoh template tiap kategori segera hadir.
 
-## Desain (tema Editorial terang, redesign 2026-11-24)
+## Desain (tema Split / Rail, rombak 2026-11-25)
 
-- Tema Editorial terang (arahan Iky 23:33: bukan AI slop, bukan kartun,
-  tanpa contoh template dulu, fokus homepage): kertas hangat `#faf7f1`,
-  tinta `#1a1712`, muted `#6f6a5e`, satu aksen vermilion `#c2410c`,
-  garis hairline `#e4ded1`. Datar, tanpa gradasi, tanpa kaca, tanpa
-  bayangan, radius 0, tanpa ungu. Palet diverifikasi (chroma): tinta di
-  kertas 16.71:1, muted di kertas 5.04:1, aksen di kertas 4.84:1.
-  Aturan lengkap di `DESIGN.md` (aturan 8).
-- Hero tipografi + satu foto asli: judul "Website toko, siap dipakai."
-  (baris kedua aksen vermilion), lead 11 kata, search kotak (input border
-  tinta + tombol tinta solid), foto keranjang sayur full-width (Markus
-  Spiske, Wikimedia Commons, kredit di footer). Tanpa canvas 3D, tanpa
-  loader, tanpa animasi scroll.
-- Kategori jadi daftar indeks bernomor 01-06 (bukan kartu/grid): nomor
-  Fraunces aksen, nama serif, deskripsi muted, garis hairline. Hover:
-  latar kertas-2 + nama jadi aksen. Tanpa link, tanpa tombol, tanpa
-  gambar. Contoh template TIDAK ditautkan dari homepage (draf tetap ada
+- Tema Split / Rail (arahan Iky 2026-11-25: rombak homepage lagi; aturan
+  "bukan AI slop, bukan kartun, tanpa contoh template dulu, fokus
+  homepage" tetap berlaku): putih `#ffffff`, kertas rel `#f4f1ea`,
+  tinta `#161513`, muted `#5e5a52`, satu aksen hijau tua `#1e4d38`,
+  garis hairline `#ddd8cd`. Datar, tanpa gradasi, tanpa kaca, tanpa
+  bayangan, radius 0, tanpa ungu. Palet diverifikasi (rasio kontras):
+  tinta di putih 18.25:1, muted di putih 6.86:1, aksen di putih 9.66:1.
+  Aturan lengkap di `DESIGN.md` (aturan 9).
+- TIDAK ADA hero, grid, atau daftar indeks: halaman dua kolom. Rel kiri
+  menempel (360px): judul, intro, search, penghitung hasil, cara kerja
+  3 langkah. Kolom kanan: 6 artikel kategori, masing-masing nomor besar
+  + nama Archivo 800 + satu foto asli 3:2 + deskripsi + daftar
+  "Isi template". Tanpa canvas 3D, tanpa loader, tanpa animasi scroll.
+- Foto asli per kategori (Picsum, kredit di footer, semua dicek visual
+  dan 200 sebelum push): 431 Carli Jean (kafe), 488 Monstruo Estudio
+  (warung), 21 Alejandro Escamilla (butik), 312 Sonja Langford
+  (oleh-oleh), 445 Aleksi Tappura (jasa), 292 Webvilla (kelontong).
+  Contoh template TIDAK ditautkan dari homepage (draf tetap ada
   di `templates/`).
-- "Cara kerja": tiga langkah bernomor dengan garis atas 2px tinta.
-  Penutup: satu kalimat serif + tombol tinta "Cari kategori".
-- Pencarian: filter langsung saat mengetik (data-cari + teks baris),
-  `?cari=` saat halaman dimuat, state kosong + tombol reset.
-- Sloplint: 1 FAIL + 2 REFLEX di-waive dan didokumentasikan di header
-  `css/style.css` (bukan tema Hallmark; kata aksen signature sekali di
-  hero; tidak ada kontrol disabled). Sisanya diperbaiki.
+- "Cara kerja": tiga langkah ringkas di rel kiri, bukan section sendiri.
+- Pencarian: filter langsung saat mengetik (data-cari + teks artikel),
+  `?cari=` saat halaman dimuat, penghitung "Menampilkan X dari 6
+  kategori", state kosong + tombol reset.
 - File lama yang tidak lagi dipakai homepage (tetap ada di repo karena
   snapshot push tidak bisa menghapus): `js/hero3d.js`, `js/vendor/`
   (three.js, GSAP, lottie), `assets/buildings/`, `assets/hero-city.svg`.
