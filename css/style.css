@@ -5,14 +5,14 @@
    kerja), kolom kanan berisi 6 artikel kategori, masing-masing dengan satu
    foto asli. TANPA: 3D kartun, gradasi, kaca, bayangan, loader, tilt,
    parallax, reveal saat scroll, marquee, ungu, contoh template.
-   Sistem: putih + kertas rel, tinta, satu aksen hijau tua, grotesk Archivo
+   Sistem: gelap (kertas gelap + tinta terang), satu aksen hijau mint, grotesk Archivo
    + Inter, garis hairline, sudut kotak, satu foto asli per kategori.
    Kontras dihitung (python): tinta/putih 18.25:1, muted/putih 6.86:1,
    aksen/putih 9.66:1, tinta/kertas 16.18:1, muted/kertas 6.08:1,
    aksen/kertas 8.56:1, putih/aksen 9.66:1 — semua lulus WCAG AA. */
 :root{
-  --paper:#ffffff; --rail:#f4f1ea; --ink:#161513; --muted:#5e5a52;
-  --accent:#1e4d38; --line:#ddd8cd; --line-strong:#161513;
+  --paper:#11120f; --rail:#191b16; --ink:#f2efe8; --muted:#b3ad9f;
+  --accent:#8fd6b0; --line:#33362e; --line-strong:#f2efe8;
   --display:"Archivo",system-ui,-apple-system,sans-serif;
   --sans:"Inter",system-ui,-apple-system,sans-serif;
   --rail-w:360px;
